@@ -18,7 +18,7 @@ import styles from './footer.module.css'
 function Footer() {
     return (
         <>
-            <footer>
+            <footer style={{ "backgroundColor": "#30313F", position: "relative", bottom: '0px', width : '100%'}}>
                 <div>
                     <div className={`${styles.poweredBy} "pt-3"`}>
                         Powered-by

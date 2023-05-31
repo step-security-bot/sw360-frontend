@@ -86,3 +86,10 @@
     margin-left: 10px;
     margin-top: 0px;
 }
+
+.titleSubSideBar {
+    color: #000000;
+    text-transform: capitalize;
+    font-size: medium;
+    margin-top: 10px;
+}
