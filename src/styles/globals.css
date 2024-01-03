@@ -12,31 +12,23 @@
   License-Filename: LICENSE
 */
 
-body {
-    background-color: #fafafa;
-    color: #272833;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-        Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    font-size: 1rem;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-weight: 400;
-    line-height: 1.5;
-    margin: 0;
-    text-align: inherit;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 :root {
+    --background: #fafafa;
+    --foreground: #272833;
     --font-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
         Cantarell, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --font-mono: 'Fira Mono', monospace;
     --pure-white: #ffffff;
-    --primary-color: #ffffff;
+    --primary-color: #f7941e;
     --secondary-color: #d0dde9;
     --tertiary-color: #edf0f8;
     --accent-color: #f7941e;
@@ -47,9 +39,34 @@ code {
     --column-margin-top: 4rem;
     --sw360-primary-background-color: #5d8ea9;
     --sw360-primary-color: #f7941e;
-    --sw360-navlink-color: #6c757d;
-    --sw360-navlink-hover-color: #f7941e;
-    --sw360-navlink-active-color: #272833;
+    --link-color: #f7941e;
+    --link-hover-color: #5d8ea9;
+    --navlink-color: #6c757d;
+    --navlink-hover-color: #f7941e;
+    --navlink-active-color: #272833;
+    --sw360-pagination-hover: #6c757d;
+    --table-border-color: #e5e7eb;
+    --table-header-border-color: #7296a9;
+    --tab-active-background: #5d8ea9;
+    --tab-active-foreground: var(--primary-color);
+    --tab-hover-background: #5d8ea9;
+    --tab-hover-foreground: var(--primary-color);
+    --card-background: #ebf0f5;
+    --placeholder-foreground: #2728336d;
+}
+
+[data-theme='dark'] {
+    --background: #22272e;
+    --foreground: #c6d1dc;
+    --card-background: #2b313a;
+    --navlink-color: #b0beca;
+    --navlink-active-color: #b0beca;
+    --navlink-hover-color: #f7941e;
+    --table-border-color: #404043;
+    --table-header-border-color: #7296a9;
+    --link-color: #7bbee3;
+    --link-hover-color: #f7941e;
+    --placeholder-foreground: #c6d1dc6d;
 }
 
 .header {
@@ -62,6 +79,8 @@ code {
 
 html,
 body {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
     height: 100%;
 }
 
@@ -217,18 +236,18 @@ th {
 }
 
 .nav-link {
-    color: var(--sw360-navlink-color) !important;
+    color: var(--navlink-color) !important;
     font-size: 0.95rem;
     font-weight: 600;
 }
 
 .nav-link:hover {
-    color: var(--sw360-navlink-hover-color) !important;
+    color: var(--navlink-hover-color) !important;
     border-bottom-color: var(--sw360-primary-color) !important;
 }
 
 .nav-link.active {
-    color: var(--sw360-navlink-active-color);
+    color: var(--navlink-active-color) !important;
     font-weight: bold;
 }
 
@@ -260,11 +279,15 @@ th {
     margin-left: -12px;
     margin-right: -12px;
 }
+
 .card-deck .card {
     flex: 1 0 0%;
     margin-bottom: 0;
     margin-left: 12px;
     margin-right: 12px;
+    background-color: var(--card-background) !important;
+    color: var(--foreground) !important;
+    border: 1px solid var(--table-border-color);
 }
 
 .card-header:first-child {
@@ -272,7 +295,7 @@ th {
 }
 
 .card-header {
-    border-bottom: 0px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 0px solid --table-border-color;
     padding: 0.75rem 1.25rem !important;
     color: white !important;
     background-color: var(--sw360-primary-background-color) !important;
@@ -284,7 +307,6 @@ th {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 1rem;
-    background-color: #ebf0f5;
 }
 
 .sw360-button {
@@ -369,8 +391,14 @@ th {
     color: var(--sw360-primary-background-color);
 }
 
+.list-group-item {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border-color: var(--table-border-color) !important;
+}
+
 .list-group-item-action {
-    background-color: white !important;
+    background-color: var(--background) !important;
     color: #6b6c7e !important;
 }
 
@@ -604,4 +632,51 @@ th {
 .fi.custom-class,
 .fi-flag.custom-class {
     cursor: pointer;
+}
+
+.sw360-colors {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.form-control {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border: 1px solid var(--table-border-color) !important;
+}
+
+.form-control::placeholder {
+    color: var(--placeholder-foreground) !important;
+}
+
+.form-control:placeholder-shown {
+    color: var(--placeholder-foreground) !important;
+}
+
+.form-select {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border: 1px solid var(--table-border-color) !important;
+}
+
+.dropdown-menu {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+}
+
+.dropdown-item {
+    color: var(--foreground) !important;
+}
+
+.dropdown-item:hover {
+    color: var(--foreground) !important;
+    background-color: var(--tab-hover-background) !important;
+}
+
+.modal-content {
+    background-color: var(--background) !important;
 }

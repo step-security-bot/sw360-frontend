@@ -9,12 +9,24 @@
 // License-Filename: LICENSE
 
 'use client'
-import { SessionProvider } from 'next-auth/react'
 
-type Props = {
+import { NextUIProvider } from '@nextui-org/react'
+import { SessionProvider } from 'next-auth/react'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { ThemeProviderProps } from 'next-themes/dist/types'
+1
+
+export interface ProviderProps {
     children?: React.ReactNode
+    themeProps?: ThemeProviderProps
 }
 
-export const Providers = ({ children }: Props) => {
-    return <SessionProvider>{children}</SessionProvider>
+export function Providers({ children, themeProps }: ProviderProps) {
+    return (
+        <SessionProvider>
+            <NextUIProvider>
+                <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+            </NextUIProvider>
+        </SessionProvider>
+    )
 }

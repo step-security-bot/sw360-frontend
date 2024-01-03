@@ -9,28 +9,20 @@
 
 'use client'
 
-import Link from 'next/link'
-
 import { PageButtonHeaderProps } from './PageButtonHeader.types'
 import styles from './pagebuttonheader.module.css'
+
+import { Link } from '@nextui-org/react'
+import { Button } from '@sw360'
 
 function PageButtonHeader({ title, buttons, children }: PageButtonHeaderProps) {
     let buttonList: JSX.Element[] = []
     if (buttons) {
         buttonList = Object.entries(buttons).map(([key, value]) => {
             return (
-                // Button needs to link to the referenced page from props (value)
-                // and switch to the correct tab (key)
-                <Link href={value['link']} key={key}>
-                    <button
-                        key={key}
-                        className={`btn btn-${value['type']}`}
-                        style={{ marginRight: '10px' }}
-                        onClick={value.onClick}
-                    >
-                        {value?.name}
-                    </button>
-                </Link>
+                <Button key={key} onClick={value.onClick} as={Link} href={value['link']} color={value['color']}>
+                    {value?.name}
+                </Button>
             )
         })
     }

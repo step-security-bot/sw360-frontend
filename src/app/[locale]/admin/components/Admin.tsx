@@ -10,7 +10,6 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { AiOutlineTags, AiOutlineUnorderedList } from 'react-icons/ai'
 import { BsBag, BsFileEarmarkText, BsFilter, BsSearch } from 'react-icons/bs'
 import { FiEdit2 } from 'react-icons/fi'
@@ -19,6 +18,9 @@ import { ImUsers } from 'react-icons/im'
 import { RiArrowUpDownFill, RiOrganizationChart } from 'react-icons/ri'
 import { RxCalendar } from 'react-icons/rx'
 
+import { Link } from '@nextui-org/react'
+import { Button } from '@sw360'
+
 const AdminMainPage = () => {
     const t = useTranslations('default')
 
@@ -26,75 +28,91 @@ const AdminMainPage = () => {
         <>
             <div className='mx-5 mt-3'>
                 <div className='row d-flex justify-content-end buttonheader-title'>{t('ADMINISTRATION')}</div>
-                <div className='mt-4 d-flex flex-wrap justify-content-center px-5 mx-auto'>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <ImUsers /> {t('User')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <RiOrganizationChart /> {t('Department')}
-                        </button>
-                    </Link>
-                    <Link href='/admin/vendors'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <BsBag /> {t('Vendors')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <FiEdit2 /> {t('Bulk Release Edit')}
-                        </button>
-                    </Link>
-                    <Link href='/admin/licenses'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <BsFileEarmarkText /> {t('Licenses')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <AiOutlineTags /> {t('License Types')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <AiOutlineUnorderedList /> {t('Obligations')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <RxCalendar /> {t('Schedule')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <svg className='fossology_icon mb-1' height={18} width={18}>
-                                <use href='icons.svg#fossology'></use>
-                            </svg>{' '}
-                            {t('Fossology')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <RiArrowUpDownFill /> {t('Import Export')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <BsSearch /> {t('Database Sanitation')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <BsFilter /> {t('Attachment Cleanup')}
-                        </button>
-                    </Link>
-                    <Link href='#'>
-                        <button type='button' className='btn btn-secondary mb-2 mx-2' style={{ width: '210px' }}>
-                            <HiOutlineDocumentDuplicate /> {t('OAuth Client')}
-                        </button>
-                    </Link>
+                <div className='flex flex-wrap gap-4 items-center'>
+                    <Button variant='solid' size='lg' color='default' startContent={<ImUsers />} href='#' as={Link}>
+                        {t('User')}
+                    </Button>
+                    <Button
+                        variant='solid'
+                        size='lg'
+                        color='default'
+                        startContent={<RiOrganizationChart />}
+                        href='#'
+                        as={Link}
+                    >
+                        {t('Department')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<BsBag />} href='#' as={Link}>
+                        {t('Vendors')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<FiEdit2 />} href='#' as={Link}>
+                        {t('Bulk Release Edit')}
+                    </Button>
+                    <Button
+                        variant='solid'
+                        size='lg'
+                        color='default'
+                        startContent={<BsFileEarmarkText />}
+                        href='/admin/licenses'
+                        as={Link}
+                    >
+                        {t('Licenses')}
+                    </Button>
+                    <Button
+                        variant='solid'
+                        size='lg'
+                        color='default'
+                        startContent={<AiOutlineTags />}
+                        href='#'
+                        as={Link}
+                    >
+                        {t('License Types')}
+                    </Button>
+                    <Button
+                        variant='solid'
+                        size='lg'
+                        color='default'
+                        startContent={<AiOutlineUnorderedList />}
+                        href='#'
+                        as={Link}
+                    >
+                        {t('Obligations')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<RxCalendar />} href='#' as={Link}>
+                        {t('Schedule')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<RxCalendar />} href='#' as={Link}>
+                        {t('Fossology')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<RxCalendar />} href='#' as={Link}>
+                        {t('Fossology')}
+                    </Button>
+                    <Button
+                        variant='solid'
+                        size='lg'
+                        color='default'
+                        startContent={<RiArrowUpDownFill />}
+                        href='#'
+                        as={Link}
+                    >
+                        {t('Import Export')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<BsSearch />} href='#' as={Link}>
+                        {t('Database Sanitation')}
+                    </Button>
+                    <Button variant='solid' size='lg' color='default' startContent={<BsFilter />} href='#' as={Link}>
+                        {t('Attachment Cleanup')}
+                    </Button>
+                    <Button
+                        variant='solid'
+                        size='lg'
+                        color='default'
+                        startContent={<HiOutlineDocumentDuplicate />}
+                        href='#'
+                        as={Link}
+                    >
+                        {t('OAuth Client')}
+                    </Button>
                 </div>
             </div>
         </>

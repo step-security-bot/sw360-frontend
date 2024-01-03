@@ -30,7 +30,7 @@ interface Props {
     eccStatus?: string
 }
 
-const SideBar = ({ selectedTab, setSelectedTab, tabList, vulnerabilities, eccStatus }: Props) => {
+function SideBar({ selectedTab, setSelectedTab, tabList, vulnerabilities, eccStatus }: Props) {
     const [numberOfCheckedOrUncheckedVulnerabilities, setNumberOfCheckedOrUncheckedVulnerabilities] = useState(0)
     const [numberOfIncorrectVulnerabilities, setNumberOfIncorrectVulnerabilities] = useState(0)
     const t = useTranslations('default')
@@ -110,7 +110,7 @@ const SideBar = ({ selectedTab, setSelectedTab, tabList, vulnerabilities, eccSta
     }
 
     return (
-        <div id='detailTab' className='list-group' data-initial-tab={selectedTab} role='tablist'>
+        <div id='detailTab' className='list-group' data-initial-tab={selectedTab} role='tablist tab'>
             {createMenuBar()}
         </div>
     )

@@ -9,9 +9,9 @@
 
 'use client'
 
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react'
 import { useLocale } from 'next-intl'
-import React, { useTransition } from 'react'
-import { Dropdown } from 'react-bootstrap'
+import React, { Key, useTransition } from 'react'
 
 import { LOCALES } from '@/constants'
 import { usePathname, useRouter } from '../../../navigation'
@@ -21,7 +21,7 @@ interface Option {
     flag: string
 }
 
-function LocaleSwitcher() {
+function LocaleSwitcher({ className }: { className: string }) {
     const [, startTransition] = useTransition()
     const router = useRouter()
     const locale = useLocale()
@@ -38,7 +38,7 @@ function LocaleSwitcher() {
         const langName = new Intl.DisplayNames([locale], { type: 'language' })
         return langName.of(lang)
     }
-    const handleSelect = (selectedId: string) => {
+    const handleSelect = (selectedId: Key) => {
         const option = LOCALES.find((option) => option.i18n === selectedId)
         const nextLocale = option.i18n
         setSelectedOption(option || null)
@@ -50,19 +50,19 @@ function LocaleSwitcher() {
     }
 
     return (
-        <Dropdown onSelect={handleSelect}>
-            <Dropdown.Toggle variant='secondary' id='dropdown-basic'>
+        <Dropdown className={className}>
+            <DropdownTrigger>
                 <span className={`fi fi-${getCurrentFlag()}`} />
-            </Dropdown.Toggle>
+            </DropdownTrigger>
 
-            <Dropdown.Menu align={'end'}>
+            <DropdownMenu aria-label='Language Switcher' onAction={(key) => handleSelect(key)}>
                 {LOCALES.map((option) => (
-                    <Dropdown.Item eventKey={option.i18n} key={option.i18n}>
+                    <DropdownItem key={option.i18n}>
                         <span className={`fi fi-${option.flag}`} />
                         <span style={{ marginLeft: '4px' }}>{getLanguageName(option.i18n)}</span>
-                    </Dropdown.Item>
+                    </DropdownItem>
                 ))}
-            </Dropdown.Menu>
+            </DropdownMenu>
         </Dropdown>
     )
 }

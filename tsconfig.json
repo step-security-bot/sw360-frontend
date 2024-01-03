@@ -28,6 +28,7 @@
         "allowSyntheticDefaultImports": true,
         "paths": {
             "next-sw360": ["./src/components/sw360"],
+            "@sw360": ["./src/components/sw360ui"],
             "@/app/*": ["./src/app/*"],
             "@/assets/*": ["./src/assets/*"],
             "@/components/*": ["./src/components/*"],
@@ -47,12 +48,13 @@
     },
     "include": [
         "next-env.d.ts",
-        "next.config.js",
         "nextauth.d.ts",
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "*.tsx"
+        "tailwind.config.js",
+        "postcss.config.json",
+        "next.config.js"
     ],
     "exclude": ["dist", "node_modules", "src/**/*.test.tsx"]
 }

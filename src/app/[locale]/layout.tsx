@@ -8,11 +8,12 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
+import 'flag-icons/css/flag-icons.min.css'
+
+import '@/styles/gridjs/sw360.css'
+
 import '@/styles/auth.css'
 import '@/styles/globals.css'
-import '@/styles/gridjs/sw360.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'flag-icons/css/flag-icons.min.css'
 
 import { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
@@ -21,7 +22,8 @@ import { notFound } from 'next/navigation'
 import { ReactNode } from 'react'
 
 import { LOCALES } from '@/constants'
-import { Footer, Navbar } from 'next-sw360'
+import { Navbar } from '@sw360'
+import { Footer } from 'next-sw360'
 import { Providers } from '../provider'
 
 export const metadata: Metadata = {
@@ -57,8 +59,8 @@ async function RootLayout({ children, params: { locale } }: Props) {
             <body>
                 <Providers>
                     <NextIntlClientProvider locale={locale} messages={messages}>
-                        <div id='container'>
-                            <div id='content'>
+                        <div>
+                            <div>
                                 <Navbar />
                                 {children}
                                 <Footer />

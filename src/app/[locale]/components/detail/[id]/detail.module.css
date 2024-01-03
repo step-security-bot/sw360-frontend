@@ -11,37 +11,44 @@
 */
 
 .summary-table {
-  border: 1px solid lightgray;
-  margin-bottom: 2rem !important;
+    border: 1px solid var(--table-border-color);
+    margin-bottom: 2rem !important;
 }
 
 .mapDisplayRootItem {
-  max-width: 70%;
+    max-width: 70%;
 }
 
 .summary-table tbody td:first-child {
-  width: 30%;
+    width: 30%;
 }
 
-.summary-table tbody a{
-  color: #F7941E !important;
-  text-decoration-line: none;
+.summary-table tbody a {
+    color: var(--link-color) !important;
+    text-decoration-line: none;
+}
+
+.summary-table tbody a:hover {
+    color: var(--link-hover-color) !important;
+    text-decoration-line: none;
 }
 
 .summary-table tbody td {
-  word-wrap: break-word;
+    word-wrap: break-word;
+    background-color: var(--background);
+    color: var(--foreground);
 }
 
 .btn-group:not(:last-child) {
-  margin-right: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .icon-btn {
-  color: gray;
-  font-size: 14px;
-  margin-right: 5px;
+    color: gray;
+    font-size: 14px;
+    margin-right: 5px;
 }
 
 .icon-btn:hover {
-  cursor: pointer;
+    cursor: pointer;
 }

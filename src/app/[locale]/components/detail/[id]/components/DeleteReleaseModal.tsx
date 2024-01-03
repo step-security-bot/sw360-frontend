@@ -51,7 +51,7 @@ const DeleteReleaseModal = ({ componentId, actionType, releaseId, show, setShow 
     }
 
     const handleError = useCallback(() => {
-        displayMessage('danger', 'Error when processing!')
+        displayMessage('danger', t('Error when processing!'))
         setReloadPage(true)
     }, [])
 
@@ -62,17 +62,17 @@ const DeleteReleaseModal = ({ componentId, actionType, releaseId, show, setShow 
                 const body = (await response.json()) as Array<DeleteResponse>
                 const deleteStatus = body[0].status
                 if (deleteStatus == HttpStatus.OK) {
-                    displayMessage('success', 'Delete release success!')
+                    displayMessage('success', t('Delete release success!'))
                     setReloadPage(true)
                 } else if (deleteStatus == HttpStatus.CONFLICT) {
                     displayMessage(
                         'danger',
-                        'I could not delete the release, since it is used by another component (release) or project'
+                        t('I could not delete the release, since it is used by another component (release) or project')
                     )
                 } else if (deleteStatus == HttpStatus.ACCEPTED) {
-                    displayMessage('success', 'Created moderation request!')
+                    displayMessage('success', t('Created moderation request'))
                 } else {
-                    displayMessage('danger', 'Error when processing!')
+                    displayMessage('danger', t('Error when processing'))
                 }
             } else if (response.status == HttpStatus.UNAUTHORIZED) {
                 handleError()
@@ -133,10 +133,7 @@ const DeleteReleaseModal = ({ componentId, actionType, releaseId, show, setShow 
             </Modal.Header>
             <Modal.Body>
                 <Alert variant={variant} onClose={() => setShowMessage(false)} dismissible show={showMessage}>
-                    {
-                        // @ts-expect-error: TS2345 invalidate translation even if is valid under
-                        t(message)
-                    }
+                    {message}
                 </Alert>
                 <Form>
                     {t.rich('Do you really want to delete the release?', {

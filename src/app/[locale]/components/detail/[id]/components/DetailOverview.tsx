@@ -151,7 +151,7 @@ const DetailOverview = ({ componentId }: Props) => {
                         />
                     </div>
                     <div className='col'>
-                        <div className='row' style={{ marginBottom: '20px' }}>
+                        <div className='row'>
                             <PageButtonHeader title={component.name} buttons={headerButtons}>
                                 {selectedTab === CommonTabIds.ATTACHMENTS && attachmentNumber > 0 && (
                                     <div className='list-group-companion' data-belong-to='tab-Attachments'>
@@ -171,7 +171,7 @@ const DetailOverview = ({ componentId }: Props) => {
                                     <div
                                         className='nav nav-pills justify-content-center bg-light font-weight-bold'
                                         id='pills-tab'
-                                        role='tablist'
+                                        role='tablist tab'
                                     >
                                         <a
                                             className={`nav-item nav-link ${
@@ -221,7 +221,7 @@ const DetailOverview = ({ componentId }: Props) => {
                                 </div>
                                 <div className='row' hidden={changesLogTab != 'view-log' ? true : false}>
                                     <ChangeLogDetail changeLogData={changeLogList[changeLogIndex]} />
-                                    <div id='cardScreen' style={{ padding: '0px' }}></div>
+                                    <div id='cardScreen'></div>
                                 </div>
                             </div>
                         </div>

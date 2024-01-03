@@ -41,7 +41,7 @@ const ComponentGeneral = ({ component, componentId }: Props) => {
             </thead>
             <tbody hidden={toggle}>
                 <tr>
-                    <td className={styles.tag}>Id:</td>
+                    <td>Id:</td>
                     <td id='documentId'>
                         {componentId}
                         <button
@@ -67,7 +67,7 @@ const ComponentGeneral = ({ component, componentId }: Props) => {
                     <td>{t('Created by')}:</td>
                     <td>
                         {component['_embedded'] && (
-                            <a className={styles.link} href={`mailto:${component['_embedded']['createdBy']['email']}`}>
+                            <a href={`mailto:${component['_embedded']['createdBy']['email']}`}>
                                 {component['_embedded']['createdBy']['fullName']}
                             </a>
                         )}
@@ -83,11 +83,7 @@ const ComponentGeneral = ({ component, componentId }: Props) => {
                 </tr>
                 <tr>
                     <td>{t('Modified By')}:</td>
-                    <td>
-                        {component['modifiedBy'] && (
-                            <a className={styles.link} href={`mailto:${component['modifiedBy']}`}></a>
-                        )}
-                    </td>
+                    <td>{component['modifiedBy'] && <a href={`mailto:${component['modifiedBy']}`}></a>}</td>
                 </tr>
                 <tr>
                     <td>{t('Component Type')}:</td>
