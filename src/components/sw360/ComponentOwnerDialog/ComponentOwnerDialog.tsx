@@ -10,14 +10,15 @@
 
 'use client'
 
+import { notFound } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { ComponentOwner, ComponentOwnerType, HttpStatus } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import SelectTableComponentOwner from '../SelectTableComponentOwner/SelectTableComponentOwner'
 
 interface Props {
@@ -51,7 +52,7 @@ function ComponentOwnerDialog({ show, setShow, selectComponentOwner }: Props) {
                 notFound()
             }
         },
-        [session]
+        [session],
     )
 
     useEffect(() => {
@@ -79,7 +80,7 @@ function ComponentOwnerDialog({ show, setShow, selectComponentOwner }: Props) {
 
     const getComponentOwner: ComponentOwnerType = useCallback(
         (componentOwner: ComponentOwner) => setComponentOwner(componentOwner),
-        []
+        [],
     )
 
     return (

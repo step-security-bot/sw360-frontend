@@ -17,6 +17,7 @@ import { Button, Modal } from 'react-bootstrap'
 
 import { Attachment, ComponentPayload, DocumentTypes, Release } from '@/object-types'
 import { SW360_API_URL } from '@/utils/env'
+
 import styles from './SelectAttachment.module.css'
 
 interface Props {

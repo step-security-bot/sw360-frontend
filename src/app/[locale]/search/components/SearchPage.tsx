@@ -10,12 +10,13 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useState } from 'react'
 import { Alert, Spinner } from 'react-bootstrap'
 
 import { SearchResult } from '@/object-types'
-import { useTranslations } from 'next-intl'
-import { _, Table } from 'next-sw360'
+
 import KeywordSearch from './KeywordSearch'
 
 export default function Search() {
@@ -45,7 +46,7 @@ export default function Search() {
                                 )
                             }
                         })()}
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -74,7 +75,7 @@ export default function Search() {
                                 return <p>{name}</p>
                             }
                         })()}
-                    </>
+                    </>,
                 ),
             sort: true,
         },

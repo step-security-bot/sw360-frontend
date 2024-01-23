@@ -13,6 +13,7 @@ import { useState } from 'react'
 
 import { Component, User } from '@/object-types'
 import { CommonUtils } from '@/utils'
+
 import styles from '../detail.module.css'
 
 const SummaryRole = ({ component }: { component: Component }) => {
@@ -60,7 +61,7 @@ const SummaryRole = ({ component }: { component: Component }) => {
                                                 <a key={user.email} href={`mailto:${user.email}`}>
                                                     {user.fullName}
                                                 </a>
-                                            )
+                                            ),
                                         )
                                         .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])}
                             </>
@@ -87,7 +88,7 @@ const SummaryRole = ({ component }: { component: Component }) => {
                                                     <a key={email} href={`mailto:${email}`}>
                                                         {email}
                                                     </a>
-                                                )
+                                                ),
                                             )
                                             .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])}
                                     </span>

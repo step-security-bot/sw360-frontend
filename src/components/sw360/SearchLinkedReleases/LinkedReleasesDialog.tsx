@@ -10,14 +10,15 @@
 
 'use client'
 
+import { notFound, useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, LinkedRelease, Release } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import SelectTableLinkedReleases from './SelectTableLinkedReleases'
 
 interface Props {
@@ -111,7 +112,7 @@ const LinkedReleasesDialog = ({
 
     const getLinkedReleases: (releaseLink: LinkedRelease[]) => void = useCallback(
         (releaseLink: LinkedRelease[]) => setLinkedReleasesResponse(releaseLink),
-        []
+        [],
     )
 
     return (

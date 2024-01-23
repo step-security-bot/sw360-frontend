@@ -8,11 +8,13 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { useEffect, useState } from 'react'
-import CommonUtils from '@/utils/common.utils'
-import PrettyFormatData from '@/components/PrettyFormatData/PrettyFormatData'
-import createChangesCards from '../CreateChangeCard'
 import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+
+import PrettyFormatData from '@/components/PrettyFormatData/PrettyFormatData'
+import CommonUtils from '@/utils/common.utils'
+
+import createChangesCards from '../CreateChangeCard'
 
 interface Props {
     changeLogData: any

@@ -9,18 +9,20 @@
 // License-Filename: LICENSE
 
 const ExternalIds = ({ externalIds }: any) => {
-  return (
-    <> {
-      Object.keys(externalIds).map((key) => {
-        return (
-          <li key={key}>
-            <span className="mapDisplayChildItemLeft" style={{ fontWeight: 'bold' }}>{key}: </span>
-            <span className="mapDisplayChildItemRight"> {externalIds[key]}</span>
-          </li>
-        )
-      }
-      )}
-    </>
-  )
+    return (
+        <>
+            {' '}
+            {Object.keys(externalIds).map((key) => {
+                return (
+                    <li key={key}>
+                        <span className='mapDisplayChildItemLeft' style={{ fontWeight: 'bold' }}>
+                            {key}:{' '}
+                        </span>
+                        <span className='mapDisplayChildItemRight'> {externalIds[key]}</span>
+                    </li>
+                )
+            })}
+        </>
+    )
 }
-export default ExternalIds;
+export default ExternalIds

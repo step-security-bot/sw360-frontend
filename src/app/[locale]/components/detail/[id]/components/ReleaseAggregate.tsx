@@ -14,6 +14,7 @@ import { useState } from 'react'
 
 import { Component, Vendor } from '@/object-types'
 import { CommonUtils } from '@/utils'
+
 import styles from '../detail.module.css'
 
 const ReleaseAgrregate = ({ component }: { component: Component }) => {
@@ -43,7 +44,7 @@ const ReleaseAgrregate = ({ component }: { component: Component }) => {
                                         .map(
                                             (vendor: Vendor): React.ReactNode => (
                                                 <span key={vendor.fullName}>{vendor.fullName}</span>
-                                            )
+                                            ),
                                         )
                                         .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])}
                             </>

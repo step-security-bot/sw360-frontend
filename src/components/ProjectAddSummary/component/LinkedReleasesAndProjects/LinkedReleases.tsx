@@ -10,8 +10,9 @@
 'use client'
 
 // import { Table } from '@/components/sw360'
-import LinkedReleasesModal from '@/components/sw360/LinkedReleasesModal/LinkedReleasesModal'
 import { useState } from 'react'
+
+import LinkedReleasesModal from '@/components/sw360/LinkedReleasesModal/LinkedReleasesModal'
 
 export default function LinkedReleases() {
     const [showLinkedReleasesModal, setShowLinkedReleasesModal] = useState(false)

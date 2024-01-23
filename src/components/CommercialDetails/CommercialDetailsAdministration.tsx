@@ -11,11 +11,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-
+import { ComponentOwnerDialog } from 'next-sw360'
 import { useCallback, useState } from 'react'
 
 import { ComponentOwner, Release } from '@/object-types'
-import { ComponentOwnerDialog } from 'next-sw360'
+
 import styles from './CommercialDetails.module.css'
 
 interface Props {

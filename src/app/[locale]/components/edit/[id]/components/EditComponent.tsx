@@ -10,9 +10,10 @@
 
 'use client'
 
+import { notFound, useRouter, useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-bootstrap'
 
@@ -29,7 +30,7 @@ import {
     ToastData,
 } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
+
 import DeleteComponentDialog from '../../../components/DeleteComponentDialog'
 import ComponentEditSummary from './ComponentEditSummary'
 import Releases from './Releases'
@@ -112,7 +113,7 @@ const EditComponent = ({ componentId }: Props) => {
             try {
                 const queryUrl = CommonUtils.createUrlWithParams(
                     `components/${componentId}`,
-                    Object.fromEntries(params)
+                    Object.fromEntries(params),
                 )
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
@@ -129,7 +130,7 @@ const EditComponent = ({ componentId }: Props) => {
             try {
                 const queryUrl = CommonUtils.createUrlWithParams(
                     `components/${componentId}/attachments`,
-                    Object.fromEntries(params)
+                    Object.fromEntries(params),
                 )
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {

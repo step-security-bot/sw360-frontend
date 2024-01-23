@@ -8,12 +8,13 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { Table, _ } from '@/components/sw360'
-import { Project, RestrictedResource } from '@/object-types'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Alert } from 'react-bootstrap'
+
+import { _, Table } from '@/components/sw360'
+import { Project, RestrictedResource } from '@/object-types'
 
 interface Props {
     projectUsings: Array<Project>
@@ -48,7 +49,7 @@ const ProjectsUsing = ({ projectUsings, documentName, restrictedResource }: Prop
                     href={`/projects/detail/${project._links.self.href.split('/').at(-1)}`}
                 >
                     {project.version ? `${project.name} (${project.version})` : project.name}
-                </Link>
+                </Link>,
             ),
             project.businessUnit,
             _(<Link href={`mailTo:${project.projectResponsible}}`}>{project.projectResponsible}</Link>),

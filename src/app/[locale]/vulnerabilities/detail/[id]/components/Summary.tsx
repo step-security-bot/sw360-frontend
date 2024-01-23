@@ -9,11 +9,12 @@
 
 'use client'
 
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { Vulnerability } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 export default function Summary({ summaryData }: { summaryData: Vulnerability }) {

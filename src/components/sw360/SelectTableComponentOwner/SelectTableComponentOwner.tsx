@@ -10,11 +10,11 @@
 
 'use client'
 
+import { _, Table } from 'next-sw360'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
 import { ComponentOwner, ComponentOwnerType } from '@/object-types'
-import { Table, _ } from 'next-sw360'
 
 interface Props {
     users: any[]

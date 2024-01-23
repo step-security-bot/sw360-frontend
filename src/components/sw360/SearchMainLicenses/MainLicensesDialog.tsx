@@ -10,14 +10,15 @@
 
 'use client'
 
+import { notFound, useSearchParams } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, Licenses, LicensesType } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { signOut, useSession } from 'next-auth/react'
-import { notFound, useSearchParams } from 'next/navigation'
+
 import SelectTableMainLicenses from './SelectTableMainLicenses'
 
 interface Props {

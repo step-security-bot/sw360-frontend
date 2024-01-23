@@ -31,6 +31,7 @@ import {
 } from '@/object-types'
 import DownloadService from '@/services/download.service'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import ReleaseOverview from './ReleaseOverview'
 import Summary from './Summary'
 
@@ -88,14 +89,14 @@ const DetailOverview = ({ componentId }: Props) => {
                 return undefined
             }
         },
-        [session]
+        [session],
     )
 
     const downloadBundle = () => {
         DownloadService.download(
             `${DocumentTypes.COMPONENT}/${componentId}/attachments/download`,
             session,
-            'AttachmentBundle.zip'
+            'AttachmentBundle.zip',
         )
     }
 
@@ -117,7 +118,7 @@ const DetailOverview = ({ componentId }: Props) => {
                 setChangeLogList(
                     CommonUtils.isNullOrUndefined(changeLogs['_embedded']['sw360:changeLogs'])
                         ? []
-                        : changeLogs['_embedded']['sw360:changeLogs']
+                        : changeLogs['_embedded']['sw360:changeLogs'],
                 )
             })
             .catch((err) => console.error(err))

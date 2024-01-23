@@ -11,7 +11,9 @@
 
 import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
+
 import Link from 'next/link'
+
 import styles from './footer.module.css'
 
 function Footer() {

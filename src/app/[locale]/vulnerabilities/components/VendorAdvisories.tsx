@@ -32,7 +32,7 @@ function AddVendorAdvisory({
 
     const handleChange = (
         e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>,
-        i: number
+        i: number,
     ) => {
         setPayload((prev: Vulnerability) => {
             const refs = prev.vendorAdvisories

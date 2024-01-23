@@ -9,6 +9,7 @@
 // License-Filename: LICENSE
 
 import { COTSDetails } from '@/object-types'
+
 import CommercialDetailsAdministration from './CommercialDetailsAdministration'
 import CotsOssInformation from './CotsOssInformation'
 

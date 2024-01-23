@@ -9,11 +9,12 @@
 
 'use client'
 
-import { DocumentTypes, InputKeyValue, RolesType } from '@/object-types'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { MdDeleteOutline } from 'react-icons/md'
+
+import { DocumentTypes, InputKeyValue, RolesType } from '@/object-types'
 
 interface Props {
     documentType?: string
@@ -35,7 +36,7 @@ function AddAdditionalRoles({
                 key: documentType === DocumentTypes.COMPONENT ? 'Commiter' : 'Stakeholder',
                 value: '',
             },
-        ]
+        ],
     )
     const setInputData = propSetInputList || setInputList
 

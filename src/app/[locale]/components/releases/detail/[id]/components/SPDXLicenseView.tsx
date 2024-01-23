@@ -17,6 +17,7 @@ import Modal from 'react-bootstrap/Modal'
 import { FaInfoCircle } from 'react-icons/fa'
 
 import { CommonUtils } from '@/utils'
+
 import styles from '../detail.module.css'
 
 interface Props {
@@ -135,7 +136,7 @@ const SPDXLicenseView = ({ licenseInfo, isISR, attachmentName }: Props) => {
                                 Source File List:
                                 <ul>
                                     {CommonUtils.isNullEmptyOrUndefinedArray(
-                                        licenseInfo[selectedLicenseId] as Array<string>
+                                        licenseInfo[selectedLicenseId] as Array<string>,
                                     ) ? (
                                         <li>Source file information not found in ISR</li>
                                     ) : (

@@ -10,9 +10,10 @@
 
 'use client'
 
+import { notFound, useRouter, useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-bootstrap'
 
@@ -21,10 +22,10 @@ import AddCommercialDetails from '@/components/CommercialDetails/AddCommercialDe
 import LinkedReleases from '@/components/LinkedReleases/LinkedReleases'
 import {
     ActionType,
-    COTSDetails,
     ClearingInformation,
     CommonTabIds,
     ComponentOwner,
+    COTSDetails,
     DocumentTypes,
     ECCInformation,
     HttpStatus,
@@ -37,7 +38,7 @@ import {
     Vendor,
 } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
+
 import DeleteReleaseModal from '../../../detail/[id]/components/DeleteReleaseModal'
 import EditClearingDetails from './EditClearingDetails'
 import EditECCDetails from './EditECCDetails'
@@ -244,7 +245,7 @@ const EditRelease = ({ releaseId }: Props) => {
                 true,
                 'Success',
                 `Success: Release ${release.name} (${release.version})  updated successfully!`,
-                'success'
+                'success',
             )
             const releaseId: string = CommonUtils.getIdFromUrl(release._links.self.href)
             router.push('/components/releases/detail/' + releaseId)

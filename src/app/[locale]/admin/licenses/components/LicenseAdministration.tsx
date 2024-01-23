@@ -9,14 +9,16 @@
 
 'use client'
 
-import { HttpStatus, ToastData } from '@/object-types'
-import DownloadService from '@/services/download.service'
-import { ApiUtils } from '@/utils'
 import { getSession, signOut } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { ToastMessage } from 'next-sw360'
 import { useRef, useState } from 'react'
 import { ToastContainer } from 'react-bootstrap'
+
+import { HttpStatus, ToastData } from '@/object-types'
+import DownloadService from '@/services/download.service'
+import { ApiUtils } from '@/utils'
+
 import DeleteAllLicenseInformationModal from './DeleteAllLicenseInformationModal'
 
 export default function AddVendor() {

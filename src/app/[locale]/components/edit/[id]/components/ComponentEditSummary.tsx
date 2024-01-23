@@ -10,9 +10,10 @@
 
 'use client'
 
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
+import { AddAdditionalRoles, AddKeyValue } from 'next-sw360'
 import { useCallback, useEffect, useState } from 'react'
 
 import GeneralInfoComponent from '@/components/GeneralInfoComponent/GeneralInfoComponent'
@@ -29,7 +30,6 @@ import {
     Vendor,
 } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { AddAdditionalRoles, AddKeyValue } from 'next-sw360'
 
 interface Props {
     componentId?: string
@@ -75,7 +75,7 @@ export default function ComponentEditSummary({
                 notFound()
             }
         },
-        [session.user.access_token]
+        [session.user.access_token],
     )
 
     useEffect(() => {

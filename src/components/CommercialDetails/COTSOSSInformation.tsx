@@ -9,8 +9,10 @@
 // License-Filename: LICENSE
 
 'use client'
-import { Release } from '@/object-types'
 import { useTranslations } from 'next-intl'
+
+import { Release } from '@/object-types'
+
 import styles from './CommercialDetails.module.css'
 
 interface Props {

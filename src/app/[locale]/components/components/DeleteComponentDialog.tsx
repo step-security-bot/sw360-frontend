@@ -10,9 +10,9 @@
 
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Alert, Button, Form, Modal } from 'react-bootstrap'
 
@@ -68,8 +68,8 @@ const DeleteComponentDialog = ({ componentId, show, setShow, actionType }: Props
                     displayMessage(
                         'danger',
                         t(
-                            'The component cannot be deleted, since it contains releases Please delete the releases first'
-                        )
+                            'The component cannot be deleted, since it contains releases Please delete the releases first',
+                        ),
                     )
                 } else if (deleteStatus == HttpStatus.ACCEPTED) {
                     displayMessage('success', t('Created moderation request'))
@@ -92,7 +92,7 @@ const DeleteComponentDialog = ({ componentId, show, setShow, actionType }: Props
                 const componentsResponse = await ApiUtils.GET(
                     `components/${componentId}`,
                     session.user.access_token,
-                    signal
+                    signal,
                 )
                 if (componentsResponse.status == HttpStatus.OK) {
                     const component = (await componentsResponse.json()) as Component
@@ -106,7 +106,7 @@ const DeleteComponentDialog = ({ componentId, show, setShow, actionType }: Props
                 }
             }
         },
-        [componentId, handleError, session]
+        [componentId, handleError, session],
     )
 
     const handleSubmit = () => {

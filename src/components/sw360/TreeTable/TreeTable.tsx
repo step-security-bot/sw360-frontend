@@ -11,11 +11,11 @@
 
 'use client'
 
+import { _, Table } from 'next-sw360'
 import React, { useEffect, useState } from 'react'
 import { BsCaretDownFill, BsCaretRightFill } from 'react-icons/bs'
 
 import { NodeData } from '@/object-types'
-import { Table, _ } from 'next-sw360'
 
 interface Props {
     children: React.ReactNode
@@ -85,8 +85,8 @@ const TreeTable = ({ data, setData, columns }: any) => {
                                 collapseRow={() => collapseRow(item)}
                             >
                                 {cell}
-                            </PaddedCell>
-                        )
+                            </PaddedCell>,
+                        ),
                     )
                 } else {
                     parsedRowData.push(_(<PaddedCell padLength={level}>{cell}</PaddedCell>))

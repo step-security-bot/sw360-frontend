@@ -9,9 +9,10 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
+import { NextRequest } from 'next/server'
 import { withAuth } from 'next-auth/middleware'
 import createIntlMiddleware from 'next-intl/middleware'
-import { NextRequest } from 'next/server'
+
 import { locales } from './object-types/Constants'
 
 const publicPages = ['/']
@@ -36,7 +37,7 @@ const authMiddleware = withAuth(
         pages: {
             signIn: '/',
         },
-    }
+    },
 )
 
 const authAdminMiddleware = withAuth(
@@ -51,19 +52,19 @@ const authAdminMiddleware = withAuth(
         pages: {
             signIn: '/',
         },
-    }
+    },
 )
 
 export default function middleware(req: NextRequest) {
     const publicPathnameRegex = RegExp(
         `^(/(${locales.join('|')}))?(${publicPages.flatMap((p) => (p === '/' ? ['', '/'] : p)).join('|')})/?$`,
-        'i'
+        'i',
     )
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
 
     const adminPathnameRegex = RegExp(
         `^(/(${locales.join('|')}))?(${adminPages.flatMap((p) => (p === '/' ? ['', '/'] : p)).join('|')})/?$`,
-        'i'
+        'i',
     )
     const isAdminPage = adminPathnameRegex.test(req.nextUrl.pathname)
 

@@ -28,7 +28,7 @@ interface ChangeStatePayload {
     releaseVulnerabilityRelationDTOs: [
         {
             externalId: string
-        }
+        },
     ]
     comment: string
     verificationState: string
@@ -47,7 +47,7 @@ const ChangeStateDialog = ({ show, setShow, state, selectedVulner }: Props) => {
         async (url: string, data: ChangeStatePayload) => {
             return await ApiUtils.PATCH(url, data, session.user.access_token)
         },
-        [session]
+        [session],
     )
 
     const handleSubmit = () => {

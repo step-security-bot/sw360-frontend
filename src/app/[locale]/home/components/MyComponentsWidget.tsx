@@ -7,18 +7,18 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useCallback, useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 
 import { HttpStatus } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
-import { Table, _ } from 'next-sw360'
-
 import { Component, Embedded } from '@/object-types'
+import { ApiUtils, CommonUtils } from '@/utils'
+
 import HomeTableHeader from './HomeTableHeader'
 
 type EmbeddedComponent = Embedded<Component, 'sw360:components'>
@@ -40,7 +40,7 @@ function MyComponentsWidget() {
                 return undefined
             }
         },
-        [session]
+        [session],
     )
 
     useEffect(() => {
@@ -58,7 +58,7 @@ function MyComponentsWidget() {
                         components['_embedded']['sw360:components'].map((item: Component) => [
                             _(<Link href={'components/detail/' + item.id}>{item.name}</Link>),
                             CommonUtils.truncateText(item.description, 40),
-                        ])
+                        ]),
                     )
                     setLoading(false)
                 }

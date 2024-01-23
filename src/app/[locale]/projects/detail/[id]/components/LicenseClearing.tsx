@@ -12,6 +12,7 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Nav, Tab } from 'react-bootstrap'
+
 import ListView from './ListView'
 
 export default function LicenseClearing({

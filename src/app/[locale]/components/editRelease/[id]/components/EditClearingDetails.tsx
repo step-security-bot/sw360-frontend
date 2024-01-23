@@ -9,6 +9,7 @@
 // License-Filename: LICENSE
 
 import { Release } from '@/object-types'
+
 import ClearingDetails from './ClearingDetails'
 import RequestInformation from './RequestInformation'
 import SupplementalInformation from './SupplementalInformation'

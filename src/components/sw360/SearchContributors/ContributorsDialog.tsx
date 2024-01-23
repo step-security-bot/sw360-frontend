@@ -10,14 +10,15 @@
 
 'use client'
 
+import { notFound, useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, Moderators, ModeratorsType } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import SelectTableModerators from './SelectTableContributors'
 
 interface Props {

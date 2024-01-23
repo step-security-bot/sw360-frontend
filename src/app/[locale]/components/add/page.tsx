@@ -9,6 +9,7 @@
 // License-Filename: LICENSE
 
 import { Metadata } from 'next'
+
 import AddComponent from './components/AddComponent'
 
 export const metadata: Metadata = {

@@ -9,11 +9,12 @@
 
 'use client'
 
-import { Table, _ } from '@/components/sw360'
-import LinkProjectsModal from '@/components/sw360/LinkedProjectsModal/LinkProjectsModal'
-import { Project } from '@/object-types'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
+
+import { _, Table } from '@/components/sw360'
+import LinkProjectsModal from '@/components/sw360/LinkedProjectsModal/LinkProjectsModal'
+import { Project } from '@/object-types'
 
 interface Props {
     projectPayload: Project
@@ -29,7 +30,7 @@ export default function LinkedProjects({ projectPayload, setProjectPayload }: Pr
     const updateProjectData = (
         projectId: string,
         updatedProjectRelationship: string,
-        linkedProjectData: Map<string, any>
+        linkedProjectData: Map<string, any>,
     ) => {
         try {
             if (linkedProjectData.has(projectId)) {
@@ -83,7 +84,7 @@ export default function LinkedProjects({ projectPayload, setProjectPayload }: Pr
                             <option value='CONTAINED'>{t('Is a subproject')}</option>
                             <option value='DUPLICATE'>{t('Duplicate')}</option>
                         </select>
-                    </div>
+                    </div>,
                 ),
         },
         {

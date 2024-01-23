@@ -8,6 +8,7 @@
 // License-Filename: LICENSE
 
 import { Metadata } from 'next'
+
 import SearchPage from './components/SearchPage'
 
 export const metadata: Metadata = {

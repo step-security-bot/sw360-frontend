@@ -10,12 +10,13 @@
 
 'use client'
 
+import { _ } from 'next-sw360'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
 import { Licenses, LicensesType } from '@/object-types'
 import { CommonUtils } from '@/utils'
-import { _ } from 'next-sw360'
+
 import LicensesTable from './MainLicensesTable'
 
 interface Props {
@@ -58,7 +59,7 @@ const SelectTableMainLicenses = ({ licenseDatas, setLicenses, fullnames }: Props
                         onClick={() => {
                             handlerRadioButton(item)
                         }}
-                    ></Form.Check>
+                    ></Form.Check>,
                 ),
             width: '5%',
         },

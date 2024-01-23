@@ -8,11 +8,13 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { Component } from '@/object-types'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { Table, _ } from '../sw360'
+
+import { Component } from '@/object-types'
+
+import { _, Table } from '../sw360'
 import styles from './ResourceUsing.module.css'
 
 interface Props {
@@ -52,7 +54,7 @@ const ComponentsUsing = ({ componentsUsing, documentName }: Props) => {
                     href={`/components/detail/${component._links.self.href.split('/').at(-1)}`}
                 >
                     {component.name}
-                </Link>
+                </Link>,
             ),
             component.mainLicenseIds.join(', '),
             component.componentType,

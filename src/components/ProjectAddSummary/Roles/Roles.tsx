@@ -10,10 +10,10 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { SelectCountry } from 'next-sw360'
 import { useState } from 'react'
 import { GiCancel } from 'react-icons/gi'
 
-import { SelectCountry } from 'next-sw360'
 import DepartmentModal from './DepartmentModal'
 import UsersModal from './UsersModal'
 

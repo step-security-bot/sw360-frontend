@@ -9,8 +9,8 @@
 // License-Filename: LICENSE
 
 'use client'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { FaCopy, FaInfoCircle } from 'react-icons/fa'
 
@@ -18,6 +18,7 @@ import AdditionalData from '@/components/AdditionalData/AdditionalData'
 import ExternalIds from '@/components/ExternalIds/ExternalIds'
 import { Licenses, ReleaseDetail, User } from '@/object-types'
 import { CommonUtils } from '@/utils'
+
 import styles from '../detail.module.css'
 
 interface Props {
@@ -36,7 +37,7 @@ const ReleaseGeneral = ({ release, releaseId }: Props) => {
                     <Link key={index} className='link' href={`mailto:${item.email}`}>
                         {item.fullName}
                     </Link>
-                )
+                ),
             )
             .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])
     }
@@ -153,7 +154,7 @@ const ReleaseGeneral = ({ release, releaseId }: Props) => {
                                                         <a key={email} href={`mailto:${email}`}>
                                                             {email}
                                                         </a>
-                                                    )
+                                                    ),
                                                 )
                                                 .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])}
                                         </span>
@@ -201,7 +202,7 @@ const ReleaseGeneral = ({ release, releaseId }: Props) => {
                                                 className={styles.info}
                                             />
                                         </span>
-                                    )
+                                    ),
                                 )
                                 .reduce((prev, curr): React.ReactNode[] => [
                                     prev,
@@ -226,7 +227,7 @@ const ReleaseGeneral = ({ release, releaseId }: Props) => {
                                                 className={styles.info}
                                             />
                                         </span>
-                                    )
+                                    ),
                                 )
                                 .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])}
                     </td>

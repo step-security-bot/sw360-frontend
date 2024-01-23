@@ -17,6 +17,7 @@ import { Alert, Button, Modal } from 'react-bootstrap'
 
 import { Attachment, FossologyProcessInfo, FossologyProcessStatus, HttpStatus } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import styles from './fossologyClearing.module.css'
 
 interface Props {
@@ -85,7 +86,7 @@ const FossologyClearing = ({ show, setShow, releaseId }: Props) => {
                 .then((response) => response.json())
                 .catch(() => undefined)
         },
-        [session]
+        [session],
     )
 
     const fetchRelease = useCallback(async () => {
@@ -128,7 +129,7 @@ const FossologyClearing = ({ show, setShow, releaseId }: Props) => {
             const response = await fetchData(url)
             return response ? true : false
         },
-        [releaseId, fetchData]
+        [releaseId, fetchData],
     )
 
     const checkFossologyProcessStatus = useCallback(async () => {
@@ -196,7 +197,7 @@ const FossologyClearing = ({ show, setShow, releaseId }: Props) => {
 
             startIntervalCheckFossologyProcessStatus()
         },
-        [clearAllInterval, triggerFossologyClearing, startIntervalCheckFossologyProcessStatus]
+        [clearAllInterval, triggerFossologyClearing, startIntervalCheckFossologyProcessStatus],
     )
 
     const updateProgressStatus = (fossologyProcessInfo: FossologyProcessInfo) => {

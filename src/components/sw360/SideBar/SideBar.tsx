@@ -12,10 +12,11 @@
 
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import styles from './SideBar.module.css'
 
 import { CommonTabIds, LinkedVulnerability, ReleaseTabIds, VulnerabilitiesVerificationState } from '@/object-types'
 import { CommonUtils } from '@/utils'
+
+import styles from './SideBar.module.css'
 
 interface Tab {
     name: string

@@ -10,13 +10,13 @@
 
 'use client'
 
-import { signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
-import { Table, _ } from '@/components/sw360'
+import { _, Table } from '@/components/sw360'
 import { HttpStatus, LinkedRelease } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
 
@@ -38,7 +38,7 @@ const Releases = ({ componentId }: Props) => {
             try {
                 const queryUrl = CommonUtils.createUrlWithParams(
                     `components/${componentId}/releases`,
-                    Object.fromEntries(params)
+                    Object.fromEntries(params),
                 )
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
@@ -55,7 +55,7 @@ const Releases = ({ componentId }: Props) => {
                         releaseLinks._embedded['sw360:releaseLinks'].map((item: LinkedRelease) => [
                             item.name,
                             [item.id, item.version],
-                        ])
+                        ]),
                     )
                 }
             } catch (e) {
@@ -79,7 +79,7 @@ const Releases = ({ componentId }: Props) => {
                 _(
                     <Link href={'/components/releases/detail/' + id} className='link'>
                         {version}
-                    </Link>
+                    </Link>,
                 ),
             sort: true,
         },

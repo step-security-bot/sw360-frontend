@@ -10,10 +10,10 @@
 
 'used-client'
 
-import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
+import React, { useEffect, useState } from 'react'
 
 import HomeTableHeader from './HomeTableHeader'
-import { useTranslations } from 'next-intl'
 
 function RecentReleasesWidget() {
     const [data] = useState([])

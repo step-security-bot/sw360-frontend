@@ -10,14 +10,15 @@
 
 'use client'
 
+import { notFound } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, Moderators, ModeratorsType } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import SelectTableModerators from '../SearchModerators/SelectTableModerators'
 
 interface Props {
@@ -52,7 +53,7 @@ const ModeratorsDialog = ({ show, setShow, selectModerators }: Props) => {
                 notFound()
             }
         },
-        [session]
+        [session],
     )
 
     useEffect(() => {

@@ -7,19 +7,18 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { useSearchParams } from 'next/navigation'
+import { _, Table } from 'next-sw360'
 import { useCallback, useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 
 import { HttpStatus } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
-import { Table, _ } from 'next-sw360'
-
-import Link from 'next/link'
-
 import { Embedded, Project } from '@/object-types'
+import { ApiUtils, CommonUtils } from '@/utils'
+
 import HomeTableHeader from './HomeTableHeader'
 
 type EmbeddedProject = Embedded<Project, 'sw360:projects'>
@@ -41,7 +40,7 @@ function MyProjectsWidget() {
                 return undefined
             }
         },
-        [session]
+        [session],
     )
 
     useEffect(() => {
@@ -60,11 +59,11 @@ function MyProjectsWidget() {
                             _(
                                 <Link href={'projects/detail/' + CommonUtils.getIdFromUrl(item._links.self.href)}>
                                     {item.name} ({item.version})
-                                </Link>
+                                </Link>,
                             ),
                             CommonUtils.truncateText(item.description, 40),
                             item.version,
-                        ])
+                        ]),
                     )
                     setLoading(false)
                 }

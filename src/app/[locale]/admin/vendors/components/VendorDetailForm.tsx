@@ -9,9 +9,10 @@
 
 'use client'
 
-import { Vendor } from '@/object-types'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
+
+import { Vendor } from '@/object-types'
 
 export default function VendorDetailForm({
     payload,

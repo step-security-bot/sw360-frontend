@@ -10,12 +10,14 @@
 
 'use client'
 
-import { HttpStatus } from '@/object-types'
-import { ApiUtils } from '@/utils/index'
 import { getSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { PageButtonHeader } from 'next-sw360'
 import { useContext, useState } from 'react'
+
+import { HttpStatus } from '@/object-types'
+import { ApiUtils } from '@/utils/index'
+
 import User from '../../../../object-types/User'
 import { MessageContext } from './MessageContextProvider'
 import UserInformation from './UserInformation'

@@ -9,9 +9,11 @@
 
 'use client'
 
-import { AdministrationDataType } from '@/object-types'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+
+import { AdministrationDataType } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 const Capitalize = (text: string) => {

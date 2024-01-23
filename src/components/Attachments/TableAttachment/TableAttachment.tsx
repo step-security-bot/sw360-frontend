@@ -8,12 +8,12 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import React from 'react'
-
 import { useTranslations } from 'next-intl'
+import React from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 
 import { Attachment, AttachmentType, DocumentTypes } from '@/object-types'
+
 import styles from './TableAttachment.module.css'
 
 interface Props {

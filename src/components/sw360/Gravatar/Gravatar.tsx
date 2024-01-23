@@ -15,8 +15,8 @@ import { Form, Image } from 'react-bootstrap'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
 
 import sw360ProfileIcon from '@/assets/images/profile.svg'
-
 import { useLocalStorage } from '@/hooks'
+
 import styles from './Gravatar.module.css'
 
 function Gravatar({ email, noCache = false }: { email: string; noCache?: boolean }) {

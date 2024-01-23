@@ -8,9 +8,9 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
+import { useTranslations } from 'next-intl'
 import { CiCircleRemove } from 'react-icons/ci'
 import { FiCheckCircle } from 'react-icons/fi'
-import { useTranslations } from 'next-intl'
 
 const ClearingInformationStatus = ({ status }: { status: boolean | undefined }) => {
     const t = useTranslations('default')

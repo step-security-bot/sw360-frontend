@@ -10,9 +10,11 @@
 
 'use client'
 
-import { Preferences } from '@/object-types'
 import { useEffect, useState } from 'react'
 import { Accordion, Form } from 'react-bootstrap'
+
+import { Preferences } from '@/object-types'
+
 import styles from '../preferences.module.css'
 
 interface NotificationSetting {

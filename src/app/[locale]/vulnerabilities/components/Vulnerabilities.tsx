@@ -9,17 +9,19 @@
 
 'use client'
 
-import { Embedded, Vulnerability } from '@/object-types'
-import { CommonUtils } from '@/utils'
-import { SW360_API_URL } from '@/utils/env'
-import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
-import { AdvancedSearch, QuickFilter, Table, _ } from 'next-sw360'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, AdvancedSearch, QuickFilter, Table } from 'next-sw360'
 import { useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
+
+import { Embedded, Vulnerability } from '@/object-types'
+import { CommonUtils } from '@/utils'
+import { SW360_API_URL } from '@/utils/env'
+
 import DeleteVulnerabilityModal from './DeleteVulnerabilityModal'
 
 type EmbeddedVulnerabilities = Embedded<Vulnerability, 'sw360:vulnerabilityApiDTOes'>
@@ -63,7 +65,7 @@ function Vulnerabilities() {
                         <Link href={`/vulnerabilities/detail/${externalId}`} className='text-link'>
                             {externalId}
                         </Link>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -79,7 +81,7 @@ function Vulnerabilities() {
                 _(
                     <>
                         <span style={{ color: 'red' }}>{`${cvss} (as of: ${cvssTime})`}</span>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -110,7 +112,7 @@ function Vulnerabilities() {
                                 }}
                             />
                         </span>
-                    </>
+                    </>,
                 ),
         },
     ]
@@ -118,7 +120,7 @@ function Vulnerabilities() {
     const server = {
         url: CommonUtils.createUrlWithParams(
             `${SW360_API_URL}/resource/api/vulnerabilities`,
-            Object.fromEntries(params)
+            Object.fromEntries(params),
         ),
         then: (data: EmbeddedVulnerabilities) => {
             setNumVulnerabilities(data.page.totalElements)

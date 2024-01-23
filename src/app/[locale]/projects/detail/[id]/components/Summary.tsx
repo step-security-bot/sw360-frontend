@@ -9,13 +9,14 @@
 
 'use client'
 
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { BiClipboard } from 'react-icons/bi'
 
 import { SummaryDataType } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 const Capitalize = (text: string) => {

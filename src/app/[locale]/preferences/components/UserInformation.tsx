@@ -8,12 +8,12 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
+import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
+import { Gravatar } from 'next-sw360'
 
 import { User } from '@/object-types'
-import { Gravatar } from 'next-sw360'
 
 import styles from '../preferences.module.css'
 

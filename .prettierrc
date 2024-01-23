@@ -9,7 +9,5 @@
     "endOfLine": "auto",
     "bracketSpacing": true,
     "bracketSameLine": false,
-    "plugins": ["prettier-plugin-organize-imports"],
-    "overrides": [{ "files": "*.html", "options": { "parser": "babel" } }],
-    "organizeImportsSkipDestructiveCodeActions": true
+    "overrides": [{ "files": "*.html", "options": { "parser": "babel" } }]
 }

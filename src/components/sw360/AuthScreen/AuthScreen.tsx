@@ -10,15 +10,15 @@
 
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 import { useLocale, useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { LanguageSwitcher, PageSpinner } from 'next-sw360'
 import { useState } from 'react'
 import { Alert, Button, Form, Modal } from 'react-bootstrap'
 
 import { CREDENTIALS } from '@/constants'
 import { HttpStatus } from '@/object-types'
-import { LanguageSwitcher, PageSpinner } from 'next-sw360'
 
 function AuthScreen() {
     const router = useRouter()

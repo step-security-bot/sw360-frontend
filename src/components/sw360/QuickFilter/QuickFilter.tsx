@@ -11,6 +11,7 @@
 
 import React from 'react'
 import { Form } from 'react-bootstrap'
+
 import { QuickFilterProps } from './QuickFilter.types'
 
 function QuickFilter({ id, searchFunction, title = 'Quick Filter' }: QuickFilterProps) {

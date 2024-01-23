@@ -9,9 +9,9 @@
 
 'use-client'
 
-import React from 'react'
 import { getData } from 'country-list'
 import { useTranslations } from 'next-intl'
+import React from 'react'
 
 interface Props {
     selectCountry?: React.ChangeEventHandler<HTMLSelectElement>

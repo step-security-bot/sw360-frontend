@@ -10,14 +10,15 @@
 
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import React, { useRef, useState } from 'react'
 import { Alert, Button, Modal } from 'react-bootstrap'
 
 import { Component, HttpStatus } from '@/object-types'
 import { ApiUtils } from '@/utils'
+
 import styles from '../components.module.css'
 
 interface Props {
@@ -71,7 +72,7 @@ const ImportSBOMModal = ({ show, setShow }: Props) => {
         const response = await ApiUtils.POST(
             'components/prepareImport/SBOM?type=SPDX',
             formData,
-            session.user.access_token
+            session.user.access_token,
         )
         if (response.status === HttpStatus.OK) {
             const responseData = (await response.json()) as PrepareImportData
@@ -90,7 +91,7 @@ const ImportSBOMModal = ({ show, setShow }: Props) => {
             const response = await ApiUtils.POST(
                 'components/import/SBOM?type=SPDX',
                 formData,
-                session.user.access_token
+                session.user.access_token,
             )
             if (response.status === HttpStatus.OK) {
                 const responseData = (await response.json()) as Component

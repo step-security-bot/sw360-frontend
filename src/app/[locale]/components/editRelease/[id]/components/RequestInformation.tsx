@@ -10,8 +10,9 @@
 
 'use client'
 
-import { Release } from '@/object-types'
 import { useTranslations } from 'next-intl'
+
+import { Release } from '@/object-types'
 
 interface Props {
     releasePayload?: Release

@@ -9,18 +9,19 @@
 
 'use client'
 
-import { Embedded, Vendor } from '@/object-types'
-import { SW360_API_URL } from '@/utils/env'
-import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
-import { QuickFilter, Table, _ } from 'next-sw360'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, QuickFilter, Table } from 'next-sw360'
 import { useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { FaTrashAlt } from 'react-icons/fa'
 import { FiEdit2 } from 'react-icons/fi'
 import { IoMdGitMerge } from 'react-icons/io'
+
+import { Embedded, Vendor } from '@/object-types'
+import { SW360_API_URL } from '@/utils/env'
 
 type EmbeddedVendors = Embedded<Vendor, 'sw360:vendors'>
 
@@ -45,7 +46,7 @@ export default function VendorsList() {
                         <Link href='#' className='text-link'>
                             {name}
                         </Link>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -71,7 +72,7 @@ export default function VendorsList() {
                         </Link>
                         <FaTrashAlt className='btn-icon' />
                         <IoMdGitMerge className='btn-icon' />
-                    </div>
+                    </div>,
                 ),
             sort: true,
         },

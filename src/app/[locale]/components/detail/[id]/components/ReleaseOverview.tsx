@@ -10,11 +10,12 @@
 
 'use client'
 
-import { signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useCallback, useEffect, useState } from 'react'
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
 import { HiOutlineLink } from 'react-icons/hi'
@@ -24,7 +25,7 @@ import LinkReleaseToProjectModal from '@/components/LinkReleaseToProjectModal/Li
 import FossologyClearing from '@/components/sw360/FossologyClearing/FossologyClearing'
 import { Embedded, HttpStatus, LinkedRelease, ReleaseLink } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { Table, _ } from 'next-sw360'
+
 import styles from '../detail.module.css'
 import DeleteReleaseModal from './DeleteReleaseModal'
 
@@ -72,7 +73,7 @@ const ReleaseOverview = ({ componentId }: Props) => {
                 notFound()
             }
         },
-        [session.user.access_token]
+        [session.user.access_token],
     )
 
     useEffect(() => {
@@ -112,7 +113,7 @@ const ReleaseOverview = ({ componentId }: Props) => {
                 _(
                     <Link href={'/components/releases/detail/' + id} className='link'>
                         {version}
-                    </Link>
+                    </Link>,
                 ),
             sort: true,
         },
@@ -151,7 +152,7 @@ const ReleaseOverview = ({ componentId }: Props) => {
                         </Link>
                         <HiOutlineLink className={styles['icon-btn']} onClick={() => handleLinkToProject(id)} />
                         <FaTrashAlt className={styles['icon-btn']} onClick={() => handleClickDelete(id)} />
-                    </span>
+                    </span>,
                 ),
         },
     ]

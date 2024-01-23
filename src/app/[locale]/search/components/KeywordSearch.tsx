@@ -9,9 +9,9 @@
 
 'use client'
 
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
 import { Dispatch, SetStateAction, useReducer, useState } from 'react'
 import { PiInfoBold } from 'react-icons/pi'
 

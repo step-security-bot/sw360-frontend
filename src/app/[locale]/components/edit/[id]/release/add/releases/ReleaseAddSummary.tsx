@@ -11,13 +11,13 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { AddAdditionalRoles, AddKeyValue } from 'next-sw360'
 import { useState } from 'react'
 
 import ReleaseRepository from '@/components/ReleaseRepository/ReleaseRepository'
 import ReleaseSummary from '@/components/ReleaseSummary/ReleaseSummary'
 import { DocumentTypes, InputKeyValue, Licenses, Moderators, Release, Vendor } from '@/object-types'
 import CommonUtils from '@/utils/common.utils'
-import { AddAdditionalRoles, AddKeyValue } from 'next-sw360'
 
 interface Props {
     releasePayload?: Release

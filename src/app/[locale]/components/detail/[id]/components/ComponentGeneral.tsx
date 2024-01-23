@@ -17,6 +17,7 @@ import { FaCopy } from 'react-icons/fa'
 import AdditionalData from '@/components/AdditionalData/AdditionalData'
 import ExternalIds from '@/components/ExternalIds/ExternalIds'
 import { Component } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 interface Props {

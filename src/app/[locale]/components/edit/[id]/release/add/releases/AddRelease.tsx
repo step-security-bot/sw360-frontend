@@ -10,19 +10,20 @@
 
 'use client'
 
+import { notFound, useRouter, useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-bootstrap'
 
 import AddCommercialDetails from '@/components/CommercialDetails/AddCommercialDetails'
 import LinkedReleases from '@/components/LinkedReleases/LinkedReleases'
 import {
-    COTSDetails,
     CommonTabIds,
     Component,
     ComponentOwner,
+    COTSDetails,
     HttpStatus,
     Licenses,
     Moderators,
@@ -34,7 +35,7 @@ import {
     Vendor,
 } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
+
 import ReleaseAddSummary from './ReleaseAddSummary'
 import ReleaseAddTabs from './ReleaseAddTab'
 
@@ -146,7 +147,7 @@ function AddRelease({ componentId }: Props) {
             try {
                 const queryUrl = CommonUtils.createUrlWithParams(
                     `components/${componentId}`,
-                    Object.fromEntries(params)
+                    Object.fromEntries(params),
                 )
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {

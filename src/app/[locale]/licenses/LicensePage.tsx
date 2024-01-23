@@ -9,17 +9,17 @@
 
 'use client'
 
-import { signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, PageButtonHeader, QuickFilter, Table } from 'next-sw360'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { BsCheck2Circle, BsXCircle } from 'react-icons/bs'
 
 import { Embedded, HttpStatus, Licenses } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { PageButtonHeader, QuickFilter, Table, _ } from 'next-sw360'
 
 type EmbeddedLicenses = Embedded<Licenses, 'sw360:licenses'>
 
@@ -48,7 +48,7 @@ function LicensesPage() {
                 return []
             }
         },
-        [session]
+        [session],
     )
 
     useEffect(() => {
@@ -71,9 +71,9 @@ function LicensesPage() {
                                 ) : (
                                     <BsXCircle color='red' />
                                 )}
-                            </center>
+                            </center>,
                         ),
-                    ])
+                    ]),
                 )
                 // setNumberOfComponent(data.length)
                 setLoading(false)

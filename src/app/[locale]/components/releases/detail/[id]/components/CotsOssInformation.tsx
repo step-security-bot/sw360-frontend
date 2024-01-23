@@ -14,6 +14,7 @@ import { CiCircleRemove } from 'react-icons/ci'
 import { FiCheckCircle } from 'react-icons/fi'
 
 import { COTSDetails } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 const CotsOssInformation = ({ costDetails }: { costDetails: COTSDetails }) => {

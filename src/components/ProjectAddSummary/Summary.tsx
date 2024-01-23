@@ -10,11 +10,12 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { AddAdditionalRoles, AddKeyValue } from 'next-sw360'
 
 import { AddtionalDataType, DocumentTypes, InputKeyValue, Project, Vendor } from '@/object-types'
-import { AddAdditionalRoles, AddKeyValue } from 'next-sw360'
-import Roles from './Roles/Roles'
+
 import GeneralInformation from './component/Summary/GeneralInformation'
+import Roles from './Roles/Roles'
 
 interface Props {
     vendor: Vendor

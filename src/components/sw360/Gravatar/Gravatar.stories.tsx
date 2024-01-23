@@ -7,8 +7,9 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import Gravatar from './Gravatar'
 import './Gravatar.module.css'
+
+import Gravatar from './Gravatar'
 
 interface GravatarProps {
     email: string

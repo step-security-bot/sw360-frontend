@@ -8,8 +8,9 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { getServerSession } from 'next-auth'
 import { NextResponse } from 'next/server'
+import { getServerSession } from 'next-auth'
+
 import { authOptions } from '../auth/[...nextauth]/authOptions'
 
 export async function GET() {

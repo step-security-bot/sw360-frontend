@@ -10,6 +10,7 @@
 
 import ResoucesUsing from '@/components/ResourcesUsing/ResoucesUsing'
 import { DocumentTypes, ReleaseDetail } from '@/object-types'
+
 import ReleaseGeneral from './ReleaseGeneral'
 import ReleaseVendor from './ReleaseVendor'
 

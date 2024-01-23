@@ -10,16 +10,16 @@
 
 'use client'
 
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, useSelectedLayoutSegment } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { LocaleSwitcher, ProfileDropdown } from 'next-sw360'
 import { useState } from 'react'
-import { Navbar as BSNavbar, Container, Form, Nav, NavDropdown } from 'react-bootstrap'
+import { Container, Form, Nav, Navbar as BSNavbar, NavDropdown } from 'react-bootstrap'
 
 import sw360logo from '@/assets/images/sw360-logo.svg'
 import { NavList } from '@/object-types'
-import { LocaleSwitcher, ProfileDropdown } from 'next-sw360'
 
 function Navbar() {
     const router = useRouter()

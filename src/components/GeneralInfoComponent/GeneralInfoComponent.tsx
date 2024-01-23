@@ -11,10 +11,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { ShowInfoOnHover, VendorDialog } from 'next-sw360'
 import React, { useCallback, useState } from 'react'
 
 import { ComponentPayload, Vendor } from '@/object-types'
-import { ShowInfoOnHover, VendorDialog } from 'next-sw360'
+
 import styles from './SummaryComponent.module.css'
 
 interface Props {

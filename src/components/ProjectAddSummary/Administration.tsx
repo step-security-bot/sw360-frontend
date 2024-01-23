@@ -10,6 +10,7 @@
 'use client'
 
 import { Project } from '@/object-types'
+
 import Clearing from './component/Administration/Clearing'
 import LicenseInfoHeader from './component/Administration/LicenseInfoHeader'
 import Lifecycle from './component/Administration/LifeCycle'

@@ -9,15 +9,15 @@
 
 'use client'
 
-import { signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
 import { Alert, Button, Col, Form, Modal, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 import { FaInfoCircle } from 'react-icons/fa'
 
-import { Table, _ } from '@/components/sw360'
+import { _, Table } from '@/components/sw360'
 import { Embedded, HttpStatus, Project } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
 
@@ -69,7 +69,7 @@ export default function LinkProjects({
                             checked={linkProjects.has(projectId)}
                             onChange={() => handleCheckboxes(projectId)}
                         />
-                    </div>
+                    </div>,
                 ),
         },
         {
@@ -120,7 +120,7 @@ export default function LinkProjects({
                                 </span>
                             )}
                         </OverlayTrigger>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -140,7 +140,7 @@ export default function LinkProjects({
         try {
             const response = await ApiUtils.GET(
                 `projects?name=${searchValue}&luceneSearch=true`,
-                session.user.access_token
+                session.user.access_token,
             )
             if (response.status === HttpStatus.UNAUTHORIZED) {
                 return signOut()

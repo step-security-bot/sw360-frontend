@@ -13,14 +13,14 @@ import AddtionalDataType from './AddtionalDataType'
 import AdministrationDataType from './AdministrationDataType'
 import Attachment from './Attachment'
 import AuthToken from './AuthToken'
-import COTSDetails from './COTSDetails'
-import CVEReference from './CVEReference'
 import Changelogs from './Changelogs'
 import ClearingInformation from './ClearingInformation'
 import Component from './Component'
 import ComponentOwner from './ComponentOwner'
 import ComponentOwnerType from './ComponentOwnerType'
 import ComponentPayload from './ComponentPayLoad'
+import COTSDetails from './COTSDetails'
+import CVEReference from './CVEReference'
 import ECCInformation from './ECCInformation'
 import Embedded from './Embedded'
 import FossologyProcessInfo from './FossologyProcessInfo'
@@ -37,8 +37,8 @@ import ModeratorsType from './ModeratorsType'
 import NavList from './NavList'
 import NodeData from './NodeData'
 import OAuthClient from './OAuthClient'
-import Preferences from './Preferences'
 import Package from './Package'
+import Preferences from './Preferences'
 import Project from './Project'
 import ProjectReleaseEcc from './ProjectReleaseEcc'
 import Release from './Release'
@@ -67,14 +67,14 @@ export type {
     AdministrationDataType,
     Attachment,
     AuthToken,
-    COTSDetails,
-    CVEReference,
     Changelogs,
     ClearingInformation,
     Component,
     ComponentOwner,
     ComponentOwnerType,
     ComponentPayload,
+    COTSDetails,
+    CVEReference,
     ECCInformation,
     Embedded,
     FossologyProcessInfo,

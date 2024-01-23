@@ -10,14 +10,14 @@
 
 'use client'
 
-import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { Alert, Button, Form, Modal } from 'react-bootstrap'
 
 import { ActionType, HttpStatus, ReleaseDetail } from '@/object-types'
 import { ApiUtils } from '@/utils'
-import { useTranslations } from 'next-intl'
 
 const DEFAULT_RELEASE_INFO: ReleaseDetail = { name: '', version: '', _embedded: { 'sw360:attachments': [] } }
 
@@ -67,7 +67,7 @@ const DeleteReleaseModal = ({ componentId, actionType, releaseId, show, setShow 
                 } else if (deleteStatus == HttpStatus.CONFLICT) {
                     displayMessage(
                         'danger',
-                        'I could not delete the release, since it is used by another component (release) or project'
+                        'I could not delete the release, since it is used by another component (release) or project',
                     )
                 } else if (deleteStatus == HttpStatus.ACCEPTED) {
                     displayMessage('success', 'Created moderation request!')
@@ -99,7 +99,7 @@ const DeleteReleaseModal = ({ componentId, actionType, releaseId, show, setShow 
                 }
             }
         },
-        [releaseId, handleError, session]
+        [releaseId, handleError, session],
     )
 
     const handleSubmit = () => {

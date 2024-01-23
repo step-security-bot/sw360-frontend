@@ -10,9 +10,10 @@
 
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { AddAdditionalRoles, AddKeyValue, SearchUsersModal, SideBar, ToastMessage } from 'next-sw360'
 import { useState } from 'react'
 import { ToastContainer } from 'react-bootstrap'
 
@@ -31,7 +32,6 @@ import {
     Vendor,
 } from '@/object-types'
 import { ApiUtils } from '@/utils'
-import { AddAdditionalRoles, AddKeyValue, SearchUsersModal, SideBar, ToastMessage } from 'next-sw360'
 
 export default function AddComponent() {
     const t = useTranslations('default')

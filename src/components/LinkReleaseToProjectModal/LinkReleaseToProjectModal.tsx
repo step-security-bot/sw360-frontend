@@ -14,11 +14,12 @@ import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { Alert, Button, Col, Form, Modal, Row } from 'react-bootstrap'
+import { PiCheckBold } from 'react-icons/pi'
 
 import { _ } from '@/components/sw360'
 import { HttpStatus } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { PiCheckBold } from 'react-icons/pi'
+
 import ProjectTable from './ProjectTable'
 
 interface Props {
@@ -55,7 +56,7 @@ const LinkReleaseToProjectModal = ({ releaseId, show, setShow }: Props) => {
             ApiUtils.PATCH(`projects/${selectedProjectId}/releases`, [releaseId], session.user.access_token).then(
                 () => {
                     setShowMessage(true)
-                }
+                },
             )
         }
     }
@@ -106,7 +107,7 @@ const LinkReleaseToProjectModal = ({ releaseId, show, setShow }: Props) => {
                                     onClick={() =>
                                         changeSelection(project.name, project._links.self.href.split('/').at(-1))
                                     }
-                                />
+                                />,
                             ),
                             project.name,
                             project.version,
@@ -177,7 +178,7 @@ const LinkReleaseToProjectModal = ({ releaseId, show, setShow }: Props) => {
                                     {chunks}
                                 </a>
                             ),
-                        }
+                        },
                     )}
                 </Alert>
                 <Form>

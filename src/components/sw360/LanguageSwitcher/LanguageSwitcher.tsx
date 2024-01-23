@@ -11,9 +11,10 @@
 'use client'
 
 import { useTransition } from 'react'
-import { usePathname, useRouter } from '../../../navigation'
 
 import { LOCALES } from '@/constants'
+
+import { usePathname, useRouter } from '../../../navigation'
 
 function LanguageSwitcher() {
     const [, startTransition] = useTransition()

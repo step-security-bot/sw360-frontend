@@ -10,13 +10,15 @@
 
 'use client'
 
-import { HttpStatus } from '@/object-types'
-import { ApiUtils } from '@/utils/index'
 import { getSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { ShowInfoOnHover } from 'next-sw360'
 import React, { useContext, useState } from 'react'
 import { Form } from 'react-bootstrap'
+
+import { HttpStatus } from '@/object-types'
+import { ApiUtils } from '@/utils/index'
+
 import styles from '../preferences.module.css'
 import { MessageContext } from './MessageContextProvider'
 import TokensTable from './TokensTable'

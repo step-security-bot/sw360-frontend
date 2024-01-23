@@ -8,6 +8,7 @@
 // License-Filename: LICENSE
 
 import { Metadata } from 'next'
+
 import ProjectDetailTab from './components/ProjectDetailTab'
 
 interface Context {

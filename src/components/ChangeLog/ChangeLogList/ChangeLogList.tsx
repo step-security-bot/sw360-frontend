@@ -9,11 +9,11 @@
 // License-Filename: LICENSE
 
 import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useEffect, useState } from 'react'
 import { FaFileAlt } from 'react-icons/fa'
 
 import { Changelogs } from '@/object-types'
-import { Table, _ } from 'next-sw360'
 
 interface Props {
     documentId: string
@@ -66,7 +66,7 @@ const ChangeLogList = ({ documentId, setChangeLogIndex, setChangesLogTab, change
                             setChangeLogIndex(parseInt(index))
                             setChangesLogTab('view-log')
                         }}
-                    />
+                    />,
                 ),
         },
     ]

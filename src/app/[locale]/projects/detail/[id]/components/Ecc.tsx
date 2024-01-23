@@ -9,13 +9,14 @@
 
 'use client'
 
-import { Embedded, ProjectReleaseEcc } from '@/object-types'
-import { SW360_API_URL } from '@/utils/env'
+import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { Table, _ } from 'next-sw360'
-import Link from 'next/link'
+import { _, Table } from 'next-sw360'
 import { Spinner } from 'react-bootstrap'
+
+import { Embedded, ProjectReleaseEcc } from '@/object-types'
+import { SW360_API_URL } from '@/utils/env'
 
 type EmbeddedProjectReleaseEcc = Embedded<ProjectReleaseEcc, 'sw360:releases'>
 
@@ -41,7 +42,7 @@ export default function EccDetails({ projectId }: { projectId: string }) {
                         <Link href={`/components/releases/detail/${id}`} className='text-link'>
                             {`${name} (${version})`}
                         </Link>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -64,7 +65,7 @@ export default function EccDetails({ projectId }: { projectId: string }) {
                         <Link href={`mailto:${email}`} className='text-link'>
                             {email}
                         </Link>
-                    </>
+                    </>,
                 ),
             sort: true,
         },

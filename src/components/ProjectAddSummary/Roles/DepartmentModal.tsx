@@ -9,9 +9,10 @@
 
 'use client'
 
-import { Modal, Form, Row, Col, Button } from 'react-bootstrap'
-import { _, Table } from '@/components/sw360'
 import { useTranslations } from 'next-intl'
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
+
+import { _, Table } from '@/components/sw360'
 
 interface DepartmentType {
     departmentId: string
@@ -30,7 +31,7 @@ export default function DepartmentModal({ show, setShow }: { show: boolean; setS
                 _(
                     <div className='form-check d-flex justify-content-center'>
                         <input className='form-check-input' type='radio' name='department' id={departmentId} />
-                    </div>
+                    </div>,
                 ),
             width: '10%',
         },

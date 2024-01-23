@@ -8,15 +8,16 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useEffect, useState } from 'react'
 import { Alert, Button, Form } from 'react-bootstrap'
 import { FaInfoCircle } from 'react-icons/fa'
 
 import VerificationTooltip from '@/components/VerificationTooltip/VerificationTooltip'
 import { LinkedVulnerability, VerificationStateInfo, VulnerabilitiesVerificationState } from '@/object-types'
-import { Table, _ } from 'next-sw360'
+
 import ChangeStateDialog from './ChangeStateDialog'
 import VulnerabilitiesMatchingStatistics from './VulnerabilityMatchingStatistics'
 
@@ -86,7 +87,7 @@ const ComponentVulnerabilities = ({ vulnerData }: Props) => {
                         defaultChecked={checked}
                         onClick={() => handleCheckBox(index, checked)}
                         type='checkbox'
-                    ></Form.Check>
+                    ></Form.Check>,
                 ),
             sort: false,
         },
@@ -102,7 +103,7 @@ const ComponentVulnerabilities = ({ vulnerData }: Props) => {
                 _(
                     <Link href={'/vulnerabilites/detail/' + id} className='link'>
                         {externalId}
-                    </Link>
+                    </Link>,
                 ),
             sort: true,
         },
@@ -129,7 +130,7 @@ const ComponentVulnerabilities = ({ vulnerData }: Props) => {
                     <VerificationTooltip verificationStateInfos={verificationStateInfos}>
                         <FaInfoCircle style={{ marginRight: '5px', color: 'gray', width: '15px', height: '15px' }} />
                         {verificationStateInfos.at(-1).verificationState}
-                    </VerificationTooltip>
+                    </VerificationTooltip>,
                 ),
             sort: true,
         },
@@ -197,7 +198,7 @@ const ComponentVulnerabilities = ({ vulnerData }: Props) => {
                                     {' '}
                                     {t(item)}{' '}
                                 </option>
-                            )
+                            ),
                         )}
                     </Form.Select>
                     <Button onClick={handleClick}>{t('Change State')}</Button>

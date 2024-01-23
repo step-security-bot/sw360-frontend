@@ -10,11 +10,10 @@
 'use client'
 
 import Link from 'next/link'
-
-import { PageButtonHeaderProps } from './PageButtonHeader.types'
-import styles from './pagebuttonheader.module.css'
-
 import { Button } from 'react-bootstrap'
+
+import styles from './pagebuttonheader.module.css'
+import { PageButtonHeaderProps } from './PageButtonHeader.types'
 
 function PageButtonHeader({ title, buttons, children }: PageButtonHeaderProps) {
     let buttonList: JSX.Element[] = []

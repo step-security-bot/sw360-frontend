@@ -8,9 +8,8 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { memo } from 'react'
-
 import { Table } from 'next-sw360'
+import { memo } from 'react'
 
 interface Props {
     data: any

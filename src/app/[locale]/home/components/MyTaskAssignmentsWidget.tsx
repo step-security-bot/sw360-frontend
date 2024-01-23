@@ -7,10 +7,10 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import React, { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
-
 import { Table } from 'next-sw360'
+import React, { useEffect, useState } from 'react'
+
 import HomeTableHeader from './HomeTableHeader'
 
 function MyTaskAssignmentsWidget() {

@@ -10,6 +10,7 @@
 
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useCallback, useEffect, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { FaDownload } from 'react-icons/fa'
@@ -17,7 +18,7 @@ import { FaDownload } from 'react-icons/fa'
 import { Attachment, HttpStatus, LinkedAttachments } from '@/object-types'
 import DownloadService from '@/services/download.service'
 import { ApiUtils, CommonUtils } from '@/utils'
-import { Table, _ } from 'next-sw360'
+
 import styles from './Attachment.module.css'
 
 interface Props {
@@ -93,7 +94,7 @@ const Attachments = ({ documentId, documentType }: Props) => {
                 return {} as LinkedAttachments
             }
         },
-        [session.user.access_token]
+        [session.user.access_token],
     )
 
     const downloadAttachment = (attachmentId: string, attachmentName: string) => {
@@ -140,7 +141,7 @@ const Attachments = ({ documentId, documentType }: Props) => {
         {
             id: 'check',
             name: _(
-                <FaDownload className={styles['download-btn']} style={{ width: '100%' }} onClick={downloadBundle} />
+                <FaDownload className={styles['download-btn']} style={{ width: '100%' }} onClick={downloadBundle} />,
             ),
             formatter: (item: Attachment) =>
                 _(<i className={styles.collapse} onClick={buildAttachmentDetail(item)}></i>),
@@ -195,7 +196,7 @@ const Attachments = ({ documentId, documentType }: Props) => {
                         className={styles['download-btn']}
                         style={{ width: '100%' }}
                         onClick={() => downloadAttachment(attachmentId, attachmentName)}
-                    />
+                    />,
                 ),
             sort: false,
             width: '60px',

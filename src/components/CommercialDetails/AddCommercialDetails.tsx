@@ -11,8 +11,9 @@
 'use client'
 
 import { ComponentOwner, Release } from '@/object-types'
-import COTSOSSInformation from './COTSOSSInformation'
+
 import CommercialDetailsAdministration from './CommercialDetailsAdministration'
+import COTSOSSInformation from './COTSOSSInformation'
 
 interface Props {
     releasePayload?: Release

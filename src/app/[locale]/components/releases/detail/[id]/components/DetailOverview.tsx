@@ -10,9 +10,9 @@
 
 'use client'
 
+import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import { Dropdown } from 'react-bootstrap'
 
@@ -36,6 +36,7 @@ import {
 } from '@/object-types'
 import DownloadService from '@/services/download.service'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import styles from '../detail.module.css'
 import ClearingDetails from './ClearingDetails'
 import CommercialDetails from './CommercialDetails'
@@ -82,7 +83,7 @@ const DetailOverview = ({ releaseId }: Props) => {
                 return null
             }
         },
-        [session]
+        [session],
     )
 
     useEffect(() => {
@@ -132,7 +133,7 @@ const DetailOverview = ({ releaseId }: Props) => {
                     setChangeLogList(
                         CommonUtils.isNullOrUndefined(changeLogs._embedded['sw360:changeLogs'])
                             ? []
-                            : changeLogs._embedded['sw360:changeLogs']
+                            : changeLogs._embedded['sw360:changeLogs'],
                     )
             })
             .catch((err) => console.error(err))
@@ -142,7 +143,7 @@ const DetailOverview = ({ releaseId }: Props) => {
         DownloadService.download(
             `${DocumentTypes.RELEASE}/${releaseId}/attachments/download`,
             session,
-            'AttachmentBundle.zip'
+            'AttachmentBundle.zip',
         )
     }
 
@@ -198,7 +199,7 @@ const DetailOverview = ({ releaseId }: Props) => {
                                                                 {`${t('Version')} ${item.version}`}
                                                             </Link>
                                                         </Dropdown.Item>
-                                                    )
+                                                    ),
                                                 )}
                                         </Dropdown.Menu>
                                     </Dropdown>

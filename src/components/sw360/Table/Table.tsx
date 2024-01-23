@@ -11,7 +11,7 @@
 
 import { Config, Grid } from 'gridjs'
 import * as React from 'react'
-import { Component, RefObject, createRef } from 'react'
+import { Component, createRef, RefObject } from 'react'
 import { Form } from 'react-bootstrap'
 
 const defaultOptions = {

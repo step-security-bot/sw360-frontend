@@ -9,8 +9,9 @@
 // License-Filename: LICENSE
 
 'use client'
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react'
+
 import { ToastData } from '@/object-types'
-import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react'
 
 interface ProviderProps {
     children: ReactNode

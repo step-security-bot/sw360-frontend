@@ -9,6 +9,7 @@
 // License-Filename: LICENSE
 
 import React, { memo } from 'react'
+
 import { Table } from '../sw360'
 
 interface Props {

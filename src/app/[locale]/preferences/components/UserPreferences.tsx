@@ -12,8 +12,8 @@
 
 import { useTranslations } from 'next-intl'
 import { Alert } from 'react-bootstrap'
-import styles from '../preferences.module.css'
 
+import styles from '../preferences.module.css'
 import NotificationSettings from './NotificationSettings'
 
 interface NotificationSetting {

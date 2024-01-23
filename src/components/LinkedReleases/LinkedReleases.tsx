@@ -15,6 +15,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { ActionType, LinkedRelease, Release } from '@/object-types'
 import { CommonUtils } from '@/utils'
+
 import LinkedReleasesDialog from '../sw360/SearchLinkedReleases/LinkedReleasesDialog'
 import styles from './LinkedReases.module.css'
 import TableLinkedReleases from './TableLinkedReleases/TableLinkedReleases'

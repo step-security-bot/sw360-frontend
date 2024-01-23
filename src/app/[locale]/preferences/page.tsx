@@ -8,10 +8,12 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions'
-import { ApiUtils } from '@/utils/index'
 import { Metadata } from 'next'
 import { getServerSession } from 'next-auth'
+
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions'
+import { ApiUtils } from '@/utils/index'
+
 import User from '../../../object-types/User'
 import MessageContextProvider from './components/MessageContextProvider'
 import NotificationSettingForm from './components/NotificationSettingForm'

@@ -9,17 +9,18 @@
 
 'use client'
 
+import { useRouter } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { ToastMessage } from 'next-sw360'
+import { useState } from 'react'
+import { Button, Col, ListGroup, Row, Tab, ToastContainer } from 'react-bootstrap'
+
 import Administration from '@/components/ProjectAddSummary/Administration'
 import LinkedReleasesAndProjects from '@/components/ProjectAddSummary/LinkedReleasesAndProjects'
 import Summary from '@/components/ProjectAddSummary/Summary'
 import { HttpStatus, InputKeyValue, Project, ToastData, Vendor } from '@/object-types'
 import { ApiUtils } from '@/utils'
-import { signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
-import { ToastMessage } from 'next-sw360'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { Button, Col, ListGroup, Row, Tab, ToastContainer } from 'react-bootstrap'
 
 function AddProjects() {
     const router = useRouter()

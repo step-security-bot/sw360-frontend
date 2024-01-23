@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { ReleaseDetail } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 interface Props {

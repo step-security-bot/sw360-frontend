@@ -14,6 +14,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { Attachment, ComponentPayload, DocumentTypes, HttpStatus, Release } from '@/object-types'
 import { ApiUtils, CommonUtils } from '@/utils'
+
 import styles from './Attachment.module.css'
 import SelectAttachment from './SelectAttachment/SelectAttachment'
 import TableAttachment from './TableAttachment/TableAttachment'
@@ -72,7 +73,7 @@ function EditAttachments({
                 return []
             }
         },
-        [session.user.access_token]
+        [session.user.access_token],
     )
 
     useEffect(() => {

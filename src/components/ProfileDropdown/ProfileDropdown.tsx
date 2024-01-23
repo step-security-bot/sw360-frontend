@@ -7,12 +7,14 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import Image from 'next/image'
-import sw360ProfileIcon from '@/assets/images/profile.svg'
-import navbarStyles from './ProfileDropdown.module.css'
 import { signOut } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+
+import sw360ProfileIcon from '@/assets/images/profile.svg'
+
+import navbarStyles from './ProfileDropdown.module.css'
 
 const UserProfile = <Image className={navbarStyles.profileImage} src={sw360ProfileIcon} alt='Profile' />
 

@@ -10,12 +10,12 @@
 
 'use client'
 
+import { _, Table } from 'next-sw360'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
 import { Vendor, VendorType } from '@/object-types'
 import { CommonUtils } from '@/utils'
-import { Table, _ } from 'next-sw360'
 
 interface Props {
     vendors: any[]

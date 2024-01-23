@@ -9,9 +9,9 @@
 
 'use client'
 
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Nav, Tab } from 'react-bootstrap'
 
@@ -38,7 +38,7 @@ function ChangeLog({ projectId }: { projectId: string }) {
                 const response = await ApiUtils.GET(
                     `changelog/document/${projectId}`,
                     session.user.access_token,
-                    signal
+                    signal,
                 )
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -51,7 +51,7 @@ function ChangeLog({ projectId }: { projectId: string }) {
                 setChangeLogList(
                     CommonUtils.isNullOrUndefined(data['_embedded']['sw360:changeLogs'])
                         ? []
-                        : data['_embedded']['sw360:changeLogs']
+                        : data['_embedded']['sw360:changeLogs'],
                 )
             } catch (e) {
                 console.error(e)

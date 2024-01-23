@@ -9,10 +9,11 @@
 
 'use client'
 
-import { Table, _ } from '@/components/sw360'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
+
+import { _, Table } from '@/components/sw360'
 
 interface UserType {
     userId: string
@@ -33,7 +34,7 @@ export default function UsersModal({ show, setShow }: { show: boolean; setShow: 
                 _(
                     <div className='form-check'>
                         <input className='form-check-input' type='radio' name='user' id={userId} />
-                    </div>
+                    </div>,
                 ),
             width: '8%',
         },
@@ -57,7 +58,7 @@ export default function UsersModal({ show, setShow }: { show: boolean; setShow: 
                 _(
                     <Link href={'#'} className='link'>
                         {email}
-                    </Link>
+                    </Link>,
                 ),
             width: '30%',
         },

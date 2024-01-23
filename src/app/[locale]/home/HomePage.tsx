@@ -13,7 +13,6 @@
 'use client'
 
 import { signOut, useSession } from 'next-auth/react'
-
 import { PageSpinner } from 'next-sw360'
 
 import MyComponentsWidget from './components/MyComponentsWidget'

@@ -11,11 +11,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { ModeratorsDialog, SelectCountry } from 'next-sw360'
 import React, { useCallback, useState } from 'react'
 
 import ComponentOwnerDialog from '@/components/sw360/ComponentOwnerDialog/ComponentOwnerDialog'
 import { ComponentOwner, ComponentPayload, Moderators } from '@/object-types'
-import { ModeratorsDialog, SelectCountry } from 'next-sw360'
 
 interface Props {
     componentPayload?: ComponentPayload

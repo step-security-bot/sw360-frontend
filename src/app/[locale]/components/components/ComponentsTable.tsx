@@ -10,17 +10,18 @@
 
 'use client'
 
-import { useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import React, { useState } from 'react'
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
 
 import { Component, Embedded } from '@/object-types'
 import { CommonUtils } from '@/utils'
 import { SW360_API_URL } from '@/utils/env'
-import { Table, _ } from 'next-sw360'
+
 import styles from '../components.module.css'
 import DeleteComponentDialog from './DeleteComponentDialog'
 
@@ -54,7 +55,7 @@ function ComponentsTable({ setNumberOfComponent }: Props) {
                 _(
                     <Link href={'/components/detail/' + id} className='link'>
                         {name}
-                    </Link>
+                    </Link>,
                 ),
             sort: true,
         },
@@ -71,9 +72,9 @@ function ComponentsTable({ setNumberOfComponent }: Props) {
                                     {' '}
                                     {item}{' '}
                                 </Link>
-                            )
+                            ),
                         )
-                        .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr])
+                        .reduce((prev, curr): React.ReactNode[] => [prev, ', ', curr]),
                 ),
             sort: true,
         },
@@ -93,7 +94,7 @@ function ComponentsTable({ setNumberOfComponent }: Props) {
                         </Link>{' '}
                         &nbsp;
                         <FaTrashAlt className={styles['delete-btn']} onClick={() => handleClickDelete(id)} />
-                    </span>
+                    </span>,
                 ),
         },
     ]

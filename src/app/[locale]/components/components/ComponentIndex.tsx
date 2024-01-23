@@ -16,6 +16,7 @@ import { Dropdown } from 'react-bootstrap'
 
 import { AdvancedSearch, PageButtonHeader } from '@/components/sw360'
 import DownloadService from '@/services/download.service'
+
 import ComponentsTable from './ComponentsTable'
 import ImportSBOMModal from './ImportSBOMModal'
 
@@ -149,7 +150,7 @@ const ComponentIndex = () => {
         DownloadService.download(
             `reports?withlinkedreleases=${withLinkedReleases}&mimetype=xlsx&mailrequest=false&module=components`,
             session,
-            `components-${currentDate}.xlsx`
+            `components-${currentDate}.xlsx`,
         )
     }
 

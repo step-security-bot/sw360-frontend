@@ -10,13 +10,15 @@
 
 'use client'
 
-import { AccessToken, Embedded, HttpStatus } from '@/object-types'
-import { ApiUtils } from '@/utils/index'
 import { getSession, signOut } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { Table, _ } from 'next-sw360'
+import { _, Table } from 'next-sw360'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
+
+import { AccessToken, Embedded, HttpStatus } from '@/object-types'
+import { ApiUtils } from '@/utils/index'
+
 import { MessageContext } from './MessageContextProvider'
 
 interface Props {
@@ -41,7 +43,7 @@ const TokensTable = ({ generatedToken }: Props) => {
                 const expirationDate = new Date(
                     Date.parse(token.createdOn + ' +0000') +
                         token.numberOfDaysValid * 24 * 60 * 60 * 1000 -
-                        new Date().getTimezoneOffset() * 60000
+                        new Date().getTimezoneOffset() * 60000,
                 )
                 return [
                     token.name,
@@ -54,7 +56,7 @@ const TokensTable = ({ generatedToken }: Props) => {
                     _(
                         <Button variant='danger' onClick={() => revokeToken(token.name)}>
                             {t('Revoke Token')}
-                        </Button>
+                        </Button>,
                     ),
                 ]
             })

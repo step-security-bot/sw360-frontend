@@ -17,6 +17,7 @@ import { Button } from 'react-bootstrap'
 
 import { Attachment, AttachmentType, HttpStatus } from '@/object-types'
 import { ApiUtils } from '@/utils'
+
 import styles from '../detail.module.css'
 
 interface Props {
@@ -35,7 +36,7 @@ const AssessmentSummaryInfo = ({ embeddedAttachments, releaseId }: Props) => {
     const [assessmentSummaryInfo, setAssessmentSummaryInfo] = useState<AssessmentSummaryInfo>(undefined)
 
     const cliAttachmentNumber = embeddedAttachments.filter(
-        (attachment) => attachment.attachmentType == AttachmentType.COMPONENT_LICENSE_INFO_XML
+        (attachment) => attachment.attachmentType == AttachmentType.COMPONENT_LICENSE_INFO_XML,
     ).length
 
     const handleShowAssessmentInfo = async () => {

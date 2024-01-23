@@ -10,6 +10,7 @@
 'use client'
 
 import { Project } from '@/object-types'
+
 import LinkedProjects from './component/LinkedReleasesAndProjects/LinkedProjects'
 import LinkedReleases from './component/LinkedReleasesAndProjects/LinkedReleases'
 

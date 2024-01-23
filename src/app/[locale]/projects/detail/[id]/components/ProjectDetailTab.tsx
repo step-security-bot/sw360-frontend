@@ -9,13 +9,15 @@
 
 'use client'
 
-import { AdministrationDataType, HttpStatus, SummaryDataType } from '@/object-types'
-import { ApiUtils } from '@/utils'
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Button, Col, Dropdown, ListGroup, Row, Spinner, Tab } from 'react-bootstrap'
+
+import { AdministrationDataType, HttpStatus, SummaryDataType } from '@/object-types'
+import { ApiUtils } from '@/utils'
+
 import LinkProjects from '../../../components/LinkProjects'
 import Administration from './Administration'
 import ChangeLog from './Changelog'
@@ -41,7 +43,7 @@ export default function ViewProjects({ projectId }: { projectId: string }) {
                 const response = await ApiUtils.GET(
                     `projects/${projectId}/summaryAdministration`,
                     session.user.access_token,
-                    signal
+                    signal,
                 )
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()

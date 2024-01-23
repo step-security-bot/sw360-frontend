@@ -12,6 +12,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { ClearingInformation } from '@/object-types'
+
 import styles from '../detail.module.css'
 
 interface Props {

@@ -10,8 +10,8 @@
 
 import {
     Attachment,
-    COTSDetails,
     ClearingInformation,
+    COTSDetails,
     ECCInformation,
     Licenses,
     ReleaseLink,
@@ -58,7 +58,7 @@ export default interface ReleaseDetail {
                 href: string
                 name: string
                 templated: boolean
-            }
+            },
         ]
     }
     _embedded?: {

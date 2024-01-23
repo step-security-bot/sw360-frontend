@@ -11,13 +11,14 @@
 'use client'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
+import { _, Table } from 'next-sw360'
 import { useCallback, useEffect, useState } from 'react'
 import { Alert, Button } from 'react-bootstrap'
 import { FiAlertTriangle } from 'react-icons/fi'
 
 import { Attachment, AttachmentType, Embedded, HttpStatus } from '@/object-types'
 import { ApiUtils } from '@/utils'
-import { Table, _ } from 'next-sw360'
+
 import SPDXLicenseView from './SPDXLicenseView'
 
 interface Props {
@@ -54,7 +55,7 @@ const SPDXAttachments = ({ releaseId }: Props) => {
                         </>
                     ) : (
                         <>{fileName}</>
-                    )
+                    ),
                 ),
             sort: false,
         },
@@ -75,7 +76,7 @@ const SPDXAttachments = ({ releaseId }: Props) => {
                         <Button variant='secondary' onClick={() => void handleShowLicenseInfo(rowIndex, attachmentId)}>
                             {t('Show License Info')}
                         </Button>
-                    )
+                    ),
                 ),
             sort: false,
         },
@@ -98,7 +99,7 @@ const SPDXAttachments = ({ releaseId }: Props) => {
                                 />
                             )}
                         </>
-                    )
+                    ),
                 ),
             sort: false,
         },
@@ -118,7 +119,7 @@ const SPDXAttachments = ({ releaseId }: Props) => {
             const response = await ApiUtils.POST(
                 `releases/${releaseId}/spdxLicenses`,
                 requestBody,
-                session.user.access_token
+                session.user.access_token,
             )
             if (response.status == HttpStatus.UNAUTHORIZED) {
                 await signOut()
@@ -167,7 +168,7 @@ const SPDXAttachments = ({ releaseId }: Props) => {
                 await signOut()
             }
         },
-        [session.user.access_token]
+        [session.user.access_token],
     )
 
     const handleShowLicenseInfo = async (rowIndex: number, attachmentId: string) => {
@@ -225,7 +226,7 @@ const SPDXAttachments = ({ releaseId }: Props) => {
 
         fetchData(`releases/${releaseId}/attachments`)
             .then((response: Embedded<Attachment, 'sw360:attachmentDTOes'>) =>
-                response._embedded ? response._embedded['sw360:attachmentDTOes'] : []
+                response._embedded ? response._embedded['sw360:attachmentDTOes'] : [],
             )
             .then((attachments: Array<Attachment>) => {
                 const isrAttachments = filterAttachmentByType(attachments, [AttachmentType.INITIAL_SCAN_REPORT])

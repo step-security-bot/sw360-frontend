@@ -10,12 +10,13 @@
 
 'use client'
 
+import { _ } from 'next-sw360'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
 import { LinkedRelease } from '@/object-types'
 import { CommonUtils } from '@/utils'
-import { _ } from 'next-sw360'
+
 import LinkedReleasesTable from './LinkedReleasesTable'
 
 interface Props {
@@ -60,7 +61,7 @@ const SelectTableLinkedReleases = ({ releases, setLinkedReleases, linkedReleases
                         onClick={() => {
                             handlerRadioButton(item)
                         }}
-                    ></Form.Check>
+                    ></Form.Check>,
                 ),
             width: '7%',
         },

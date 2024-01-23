@@ -10,18 +10,20 @@
 
 'use client'
 
-import { Embedded, HttpStatus, Project as TypeProject } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
-import { SW360_API_URL } from '@/utils/env'
-import { getSession, signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
-import { AdvancedSearch, Table, _ } from 'next-sw360'
 import Link from 'next/link'
 import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { getSession, signOut, useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
+import { _, AdvancedSearch, Table } from 'next-sw360'
 import { useEffect, useState } from 'react'
 import { Dropdown, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
 import { FaClipboard, FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
 import { MdOutlineTask } from 'react-icons/md'
+
+import { Embedded, HttpStatus, Project as TypeProject } from '@/object-types'
+import { ApiUtils, CommonUtils } from '@/utils'
+import { SW360_API_URL } from '@/utils/env'
+
 import DeleteProjectDialog from './DeleteProjectDialog'
 
 type EmbeddedProjects = Embedded<TypeProject, 'sw360:projects'>
@@ -51,7 +53,7 @@ function LicenseClearing({ projectId }: { projectId: string }) {
                 const response = await ApiUtils.GET(
                     `projects/${projectId}/licenseClearingCount`,
                     session.user.access_token,
-                    signal
+                    signal,
                 )
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -111,7 +113,7 @@ function Project() {
                         <Link href={`/projects/detail/${id}`} className='text-link'>
                             {name}
                         </Link>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -130,7 +132,7 @@ function Project() {
                         <Link href={`mailto:${email}`} className='text-link'>
                             {email}
                         </Link>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -162,7 +164,7 @@ function Project() {
                                 <span className='badge bg-success capsule-right overlay-badge'>{'CS'}</span>
                             )}
                         </OverlayTrigger>
-                    </>
+                    </>,
                 ),
             sort: true,
         },
@@ -208,7 +210,7 @@ function Project() {
                                 </span>
                             </OverlayTrigger>
                         </span>
-                    </>
+                    </>,
                 ),
             sort: true,
         },

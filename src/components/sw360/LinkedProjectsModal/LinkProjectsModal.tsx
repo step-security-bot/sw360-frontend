@@ -9,15 +9,16 @@
 
 'use client'
 
-import { HttpStatus, Project } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { Table, _ } from 'next-sw360'
-import { notFound } from 'next/navigation'
+import { _, Table } from 'next-sw360'
 import { useRef, useState } from 'react'
 import { Alert, Button, Col, Form, Modal, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 import { FaInfoCircle } from 'react-icons/fa'
+
+import { HttpStatus, Project } from '@/object-types'
+import { ApiUtils, CommonUtils } from '@/utils'
 
 interface AlertData {
     variant: string
@@ -66,7 +67,7 @@ export default function LinkProjectsModal({
                             checked={linkProjects.has(projectId)}
                             onChange={() => handleCheckboxes(projectId)}
                         />
-                    </div>
+                    </div>,
                 ),
         },
         {
@@ -115,7 +116,7 @@ export default function LinkProjectsModal({
                                 </span>
                             )}
                         </OverlayTrigger>
-                    </>
+                    </>,
                 ),
             sort: true,
         },

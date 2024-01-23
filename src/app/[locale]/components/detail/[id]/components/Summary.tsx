@@ -10,6 +10,7 @@
 
 import ResoucesUsing from '@/components/ResourcesUsing/ResoucesUsing'
 import { Component, DocumentTypes } from '@/object-types'
+
 import ComponentGeneral from './ComponentGeneral'
 import ReleaseAgrregateData from './ReleaseAggregate'
 import SummaryRole from './SummaryRole'

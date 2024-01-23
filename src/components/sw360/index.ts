@@ -30,16 +30,16 @@ import SelectCountry from './SelectCountry/SelectCountry'
 import SelectTableComponentOwner from './SelectTableComponentOwner/SelectTableComponentOwner'
 import ShowInfoOnHover from './ShowInfoOnHover/ShowInfoOnHover'
 import SideBar from './SideBar/SideBar'
-import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher'
-import ToastMessage from './ToastContainer/Toast'
-
 // Table component
 // Strictly derived from gridjs-react with dedicated changes
 import Table from './Table/Table'
-import { ReactWrapper, _ } from './Table/wrapper'
+import { _, ReactWrapper } from './Table/wrapper'
+import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher'
+import ToastMessage from './ToastContainer/Toast'
 import TreeTable from './TreeTable/TreeTable'
 
 export {
+    _,
     AddAdditionalRoles,
     AddKeyValue,
     AdvancedSearch,
@@ -68,5 +68,4 @@ export {
     ToastMessage,
     TreeTable,
     VendorDialog,
-    _,
 }
