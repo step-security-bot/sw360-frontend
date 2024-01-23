@@ -35,26 +35,6 @@ const isNullEmptyOrUndefinedString = (str: string) => {
     return false
 }
 
-interface UrlWithParams {
-    [key: string]: string
-}
-
-/**
- * Creates a URL with query parameters.
- *
- * @param url - The base URL.
- * @param params - An object containing the query parameters.
- * @returns The URL with the query parameters.
- */
-const createUrlWithParams = (url: string, params: UrlWithParams) => {
-    const queryString = Object.keys(params)
-        .map((key) => {
-            return [key, params[key]].map(encodeURIComponent).join('=')
-        })
-        .join('&')
-    return `${url}?${queryString}`
-}
-
 /**
  * Checks if an array is null, empty or undefined.
  * @param arr - The array to check.
@@ -235,7 +215,6 @@ const truncateText = (text: string, maxLength = 80) => {
 const CommonUtils = {
     isNullOrUndefined,
     isNullEmptyOrUndefinedString,
-    createUrlWithParams,
     isNullEmptyOrUndefinedArray,
     getIdFromUrl,
     getObjectModerators,

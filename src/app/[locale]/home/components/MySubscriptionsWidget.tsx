@@ -66,6 +66,4 @@ function MySubscriptionsWidget() {
     )
 }
 
-// We need use this to override typescript issue
-// Reference: https://github.com/vercel/next.js/issues/42292
-export default MySubscriptionsWidget as unknown as () => JSX.Element
+export default MySubscriptionsWidget

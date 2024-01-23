@@ -10,14 +10,14 @@
 
 'use client'
 
-import { notFound, useSearchParams } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, Licenses, LicensesType } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import SelectTableOtherLicenses from './SelectTableOtherLicenses'
 
@@ -30,7 +30,6 @@ interface Props {
 const OtherLicensesDialog = ({ show, setShow, selectLicenses }: Props) => {
     const t = useTranslations('default')
     const { data: session } = useSession()
-    const params = useSearchParams()
     const [data, setData] = useState([])
     const [licenses] = useState([])
     const [licensesResponse, setLicensesResponse] = useState<Licenses>()
@@ -50,7 +49,7 @@ const OtherLicensesDialog = ({ show, setShow, selectLicenses }: Props) => {
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(`licenses`, Object.fromEntries(params))
+                const queryUrl = UrlWithParams('licenses')
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -74,7 +73,7 @@ const OtherLicensesDialog = ({ show, setShow, selectLicenses }: Props) => {
             }
         })()
         return () => controller.abort()
-    }, [params, session])
+    }, [session])
 
     const handleClickSelectModerators = () => {
         selectLicenses(licensesResponse)

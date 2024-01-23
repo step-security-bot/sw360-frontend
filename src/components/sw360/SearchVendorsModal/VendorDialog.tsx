@@ -10,14 +10,14 @@
 
 'use client'
 
-import { notFound, useSearchParams } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, Vendor, VendorType } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import SelectTableVendor from './SelectTableVendor'
 
@@ -30,7 +30,6 @@ interface Props {
 const VendorDialog = ({ show, setShow, selectVendor }: Props) => {
     const t = useTranslations('default')
     const { data: session } = useSession()
-    const params = useSearchParams()
     const [data, setData] = useState()
     const [vendor, setVendor] = useState<Vendor>()
     const [vendors, setVendors] = useState([])
@@ -48,7 +47,7 @@ const VendorDialog = ({ show, setShow, selectVendor }: Props) => {
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(`vendors`, Object.fromEntries(params))
+                const queryUrl = UrlWithParams('vendors')
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -74,7 +73,7 @@ const VendorDialog = ({ show, setShow, selectVendor }: Props) => {
             }
         })()
         return () => controller.abort()
-    }, [params, session])
+    }, [session])
 
     const handleClickSelectVendor = () => {
         selectVendor(vendor)

@@ -9,5 +9,6 @@
 
 import ApiUtils from './api/api.util'
 import CommonUtils from './common.utils'
+import { UrlWithParams } from './common/urlwithparams'
 
-export { ApiUtils, CommonUtils }
+export { ApiUtils, CommonUtils, UrlWithParams }

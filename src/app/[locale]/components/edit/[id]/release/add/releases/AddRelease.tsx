@@ -10,7 +10,7 @@
 
 'use client'
 
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
@@ -34,7 +34,7 @@ import {
     ToastData,
     Vendor,
 } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import ReleaseAddSummary from './ReleaseAddSummary'
 import ReleaseAddTabs from './ReleaseAddTab'
@@ -63,7 +63,6 @@ const cotsDetails: COTSDetails = {
 function AddRelease({ componentId }: Props) {
     const t = useTranslations('default')
     const { data: session } = useSession()
-    const params = useSearchParams()
     const router = useRouter()
     const [selectedTab, setSelectedTab] = useState<string>(CommonTabIds.SUMMARY)
     const [tabList, setTabList] = useState(ReleaseAddTabs.WITHOUT_COMMERCIAL_DETAILS)
@@ -145,10 +144,7 @@ function AddRelease({ componentId }: Props) {
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(
-                    `components/${componentId}`,
-                    Object.fromEntries(params),
-                )
+                const queryUrl = UrlWithParams(`components/${componentId}`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -168,7 +164,7 @@ function AddRelease({ componentId }: Props) {
             }
         })()
         return () => controller.abort()
-    }, [params, session, componentId, releasePayload])
+    }, [session, componentId, releasePayload])
 
     const submit = async () => {
         const response = await ApiUtils.POST('releases', releasePayload, session.user.access_token)

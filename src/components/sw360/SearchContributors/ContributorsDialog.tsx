@@ -10,14 +10,14 @@
 
 'use client'
 
-import { notFound, useSearchParams } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, Moderators, ModeratorsType } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import SelectTableModerators from './SelectTableContributors'
 
@@ -31,7 +31,6 @@ const ContributorsDialog = ({ show, setShow, selectModerators }: Props) => {
     const t = useTranslations('default')
     const { data: session } = useSession()
     const [data, setData] = useState()
-    const params = useSearchParams()
     const [moderators] = useState([])
     const [moderatorsResponse, setModeratorsResponse] = useState<Moderators>()
     const [users, setUsers] = useState([])
@@ -50,7 +49,7 @@ const ContributorsDialog = ({ show, setShow, selectModerators }: Props) => {
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(`users`, Object.fromEntries(params))
+                const queryUrl = UrlWithParams(`users`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -76,7 +75,7 @@ const ContributorsDialog = ({ show, setShow, selectModerators }: Props) => {
             }
         })()
         return () => controller.abort()
-    }, [params, session])
+    }, [session])
 
     const handleClickSelectModerators = () => {
         selectModerators(moderatorsResponse)

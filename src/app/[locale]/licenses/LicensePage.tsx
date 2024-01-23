@@ -10,7 +10,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { _, PageButtonHeader, QuickFilter, Table } from 'next-sw360'
@@ -19,12 +18,11 @@ import { Spinner } from 'react-bootstrap'
 import { BsCheck2Circle, BsXCircle } from 'react-icons/bs'
 
 import { Embedded, HttpStatus, Licenses } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 type EmbeddedLicenses = Embedded<Licenses, 'sw360:licenses'>
 
 function LicensesPage() {
-    const params = useSearchParams()
     const t = useTranslations('default')
     const [search, setSearch] = useState({})
     const [loading, setLoading] = useState(true)
@@ -53,8 +51,7 @@ function LicensesPage() {
 
     useEffect(() => {
         setLoading(true)
-        const searchParams = Object.fromEntries(params)
-        const queryUrl = CommonUtils.createUrlWithParams('licenses', searchParams)
+        const queryUrl = UrlWithParams('licenses')
         const controller = new AbortController()
         const signal = controller.signal
 
@@ -83,7 +80,7 @@ function LicensesPage() {
         return () => {
             controller.abort()
         }
-    }, [fetchData, params])
+    }, [fetchData])
 
     const columns = [
         { name: t('License Shortname'), width: '25%' },

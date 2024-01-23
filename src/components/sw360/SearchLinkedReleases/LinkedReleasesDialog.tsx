@@ -10,14 +10,14 @@
 
 'use client'
 
-import { notFound, useSearchParams } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 import { HttpStatus, LinkedRelease, Release } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import SelectTableLinkedReleases from './SelectTableLinkedReleases'
 
@@ -43,7 +43,6 @@ const LinkedReleasesDialog = ({
     const t = useTranslations('default')
     const { data: session } = useSession()
     const [data, setData] = useState()
-    const params = useSearchParams()
     const [linkedReleases] = useState([])
     const [linkedReleasesResponse, setLinkedReleasesResponse] = useState<LinkedRelease[]>()
     const [releases, setReleases] = useState([])
@@ -62,7 +61,7 @@ const LinkedReleasesDialog = ({
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(`releases?allDetails=true`, Object.fromEntries(params))
+                const queryUrl = UrlWithParams(`releases?allDetails=true`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -89,7 +88,7 @@ const LinkedReleasesDialog = ({
             }
         })()
         return () => controller.abort()
-    }, [params, session])
+    }, [session])
 
     const handleClickSelectLinkedReleases = () => {
         linkedReleasesResponse.forEach((linkedRelease: LinkedRelease) => {

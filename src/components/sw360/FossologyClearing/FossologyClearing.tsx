@@ -16,7 +16,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Alert, Button, Modal } from 'react-bootstrap'
 
 import { Attachment, FossologyProcessInfo, FossologyProcessStatus, HttpStatus } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import styles from './fossologyClearing.module.css'
 
@@ -125,7 +125,7 @@ const FossologyClearing = ({ show, setShow, releaseId }: Props) => {
 
     const triggerFossologyClearing = useCallback(
         async (params: { [key: string]: string }) => {
-            const url = CommonUtils.createUrlWithParams(`releases/${releaseId}/triggerFossologyProcess`, params)
+            const url = UrlWithParams(`releases/${releaseId}/triggerFossologyProcess`, params)
             const response = await fetchData(url)
             return response ? true : false
         },

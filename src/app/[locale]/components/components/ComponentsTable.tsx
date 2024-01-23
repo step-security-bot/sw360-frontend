@@ -11,7 +11,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { _, Table } from 'next-sw360'
@@ -19,7 +18,7 @@ import React, { useState } from 'react'
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
 
 import { Component, Embedded } from '@/object-types'
-import { CommonUtils } from '@/utils'
+import { CommonUtils, UrlWithParams } from '@/utils'
 import { SW360_API_URL } from '@/utils/env'
 
 import styles from '../components.module.css'
@@ -31,8 +30,6 @@ interface Props {
 
 function ComponentsTable({ setNumberOfComponent }: Props) {
     const t = useTranslations('default')
-    const params = useSearchParams()
-    const searchParams = Object.fromEntries(params)
     const [deletingComponent, setDeletingComponent] = useState<string>('')
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
     const { data: session, status } = useSession()
@@ -100,7 +97,7 @@ function ComponentsTable({ setNumberOfComponent }: Props) {
     ]
 
     const server = {
-        url: CommonUtils.createUrlWithParams(`${SW360_API_URL}/resource/api/components`, searchParams),
+        url: UrlWithParams(`${SW360_API_URL}/resource/api/components`),
         then: (data: Embedded<Component, 'sw360:components'>) => {
             setNumberOfComponent(data.page.totalElements)
             return data._embedded['sw360:components'].map((item: Component) => [

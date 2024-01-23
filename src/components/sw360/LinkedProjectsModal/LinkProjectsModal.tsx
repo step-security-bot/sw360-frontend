@@ -18,7 +18,7 @@ import { Alert, Button, Col, Form, Modal, OverlayTrigger, Row, Tooltip } from 'r
 import { FaInfoCircle } from 'react-icons/fa'
 
 import { HttpStatus, Project } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 interface AlertData {
     variant: string
@@ -144,7 +144,7 @@ export default function LinkProjectsModal({
 
     const handleSearch = async ({ searchValue }: { searchValue: string }): Promise<any> => {
         try {
-            const queryUrl = CommonUtils.createUrlWithParams('projects', {
+            const queryUrl = UrlWithParams('projects', {
                 name: `${searchValue}`,
                 luceneSearch: 'true',
             })

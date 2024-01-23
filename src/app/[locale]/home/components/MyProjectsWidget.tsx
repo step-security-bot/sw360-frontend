@@ -8,7 +8,6 @@
 // License-Filename: LICENSE
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { _, Table } from 'next-sw360'
@@ -17,7 +16,7 @@ import { Spinner } from 'react-bootstrap'
 
 import { HttpStatus } from '@/object-types'
 import { Embedded, Project } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import HomeTableHeader from './HomeTableHeader'
 
@@ -26,7 +25,6 @@ type EmbeddedProject = Embedded<Project, 'sw360:projects'>
 function MyProjectsWidget() {
     const [data, setData] = useState([])
     const t = useTranslations('default')
-    const params = useSearchParams()
     const [loading, setLoading] = useState(true)
     const { data: session } = useSession()
 
@@ -45,8 +43,7 @@ function MyProjectsWidget() {
 
     useEffect(() => {
         setLoading(true)
-        const searchParams = Object.fromEntries(params)
-        const queryUrl = CommonUtils.createUrlWithParams('projects/myprojects', searchParams)
+        const queryUrl = UrlWithParams('projects/myprojects')
 
         const controller = new AbortController()
         const signal = controller.signal
@@ -75,7 +72,7 @@ function MyProjectsWidget() {
         return () => {
             controller.abort()
         }
-    }, [fetchData, params, session])
+    }, [fetchData, session])
 
     const title = t('My Projects')
     const columns = [t('Project Name'), t('Description'), t('Approved Releases')]
@@ -95,6 +92,4 @@ function MyProjectsWidget() {
     )
 }
 
-// We need use this to override typescript issue
-// Reference: https://github.com/vercel/next.js/issues/42292
-export default MyProjectsWidget as unknown as () => JSX.Element
+export default MyProjectsWidget

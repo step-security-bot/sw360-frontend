@@ -11,14 +11,14 @@
 'use client'
 
 import Link from 'next/link'
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { _, Table } from '@/components/sw360'
 import { HttpStatus, LinkedRelease } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 interface Props {
     componentId: string
@@ -26,7 +26,6 @@ interface Props {
 
 const Releases = ({ componentId }: Props) => {
     const t = useTranslations('default')
-    const params = useSearchParams()
     const { data: session } = useSession()
     const [linkedReleases, setLinkedReleases] = useState([])
     const router = useRouter()
@@ -36,10 +35,7 @@ const Releases = ({ componentId }: Props) => {
         const signal = controller.signal
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(
-                    `components/${componentId}/releases`,
-                    Object.fromEntries(params),
-                )
+                const queryUrl = UrlWithParams(`components/${componentId}/releases`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -64,7 +60,7 @@ const Releases = ({ componentId }: Props) => {
         })()
 
         return () => controller.abort()
-    }, [params, session, componentId])
+    }, [session, componentId])
 
     const columns = [
         {

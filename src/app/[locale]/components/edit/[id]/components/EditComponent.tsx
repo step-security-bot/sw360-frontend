@@ -10,7 +10,7 @@
 
 'use client'
 
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
@@ -29,7 +29,7 @@ import {
     HttpStatus,
     ToastData,
 } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import DeleteComponentDialog from '../../../components/DeleteComponentDialog'
 import ComponentEditSummary from './ComponentEditSummary'
@@ -59,7 +59,6 @@ const tabList = [
 const EditComponent = ({ componentId }: Props) => {
     const t = useTranslations('default')
     const { data: session } = useSession()
-    const params = useSearchParams()
     const router = useRouter()
     const [selectedTab, setSelectedTab] = useState<string>(CommonTabIds.SUMMARY)
     const [component, setComponent] = useState<Component>()
@@ -111,10 +110,7 @@ const EditComponent = ({ componentId }: Props) => {
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(
-                    `components/${componentId}`,
-                    Object.fromEntries(params),
-                )
+                const queryUrl = UrlWithParams(`components/${componentId}`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -128,10 +124,7 @@ const EditComponent = ({ componentId }: Props) => {
         })()
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(
-                    `components/${componentId}/attachments`,
-                    Object.fromEntries(params),
-                )
+                const queryUrl = UrlWithParams(`components/${componentId}/attachments`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -148,7 +141,7 @@ const EditComponent = ({ componentId }: Props) => {
         })()
 
         return () => controller.abort()
-    }, [params, session, componentId])
+    }, [session, componentId])
 
     const submit = async () => {
         const response = await ApiUtils.PATCH(`components/${componentId}`, componentPayload, session.user.access_token)

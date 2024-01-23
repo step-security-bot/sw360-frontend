@@ -42,6 +42,4 @@ function RecentReleasesWidget() {
     )
 }
 
-// We need use this to override typescript issue
-// Reference: https://github.com/vercel/next.js/issues/42292
-export default RecentReleasesWidget as unknown as () => JSX.Element
+export default RecentReleasesWidget

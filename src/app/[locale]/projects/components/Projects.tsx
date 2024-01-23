@@ -11,7 +11,7 @@
 'use client'
 
 import Link from 'next/link'
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import { getSession, signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { _, AdvancedSearch, Table } from 'next-sw360'
@@ -21,7 +21,7 @@ import { FaClipboard, FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
 import { MdOutlineTask } from 'react-icons/md'
 
 import { Embedded, HttpStatus, Project as TypeProject } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, UrlWithParams } from '@/utils'
 import { SW360_API_URL } from '@/utils/env'
 
 import DeleteProjectDialog from './DeleteProjectDialog'
@@ -88,7 +88,6 @@ function LicenseClearing({ projectId }: { projectId: string }) {
 function Project() {
     const { data: session, status } = useSession()
     const t = useTranslations('default')
-    const params = useSearchParams()
     const router = useRouter()
     const [deleteProjectId, setDeleteProjectId] = useState<string>('')
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
@@ -217,7 +216,7 @@ function Project() {
     ]
 
     const server = {
-        url: CommonUtils.createUrlWithParams(`${SW360_API_URL}/resource/api/projects`, Object.fromEntries(params)),
+        url: UrlWithParams(`${SW360_API_URL}/resource/api/projects`),
         then: (data: EmbeddedProjects) => {
             return data._embedded['sw360:projects'].map((elem: TypeProject) => [
                 {

@@ -10,7 +10,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { _, AdvancedSearch, QuickFilter, Table } from 'next-sw360'
@@ -19,7 +19,7 @@ import { Spinner } from 'react-bootstrap'
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa'
 
 import { Embedded, Vulnerability } from '@/object-types'
-import { CommonUtils } from '@/utils'
+import { UrlWithParams } from '@/utils'
 import { SW360_API_URL } from '@/utils/env'
 
 import DeleteVulnerabilityModal from './DeleteVulnerabilityModal'
@@ -29,7 +29,6 @@ type EmbeddedVulnerabilities = Embedded<Vulnerability, 'sw360:vulnerabilityApiDT
 function Vulnerabilities() {
     const t = useTranslations('default')
     const { data: session, status } = useSession()
-    const params = useSearchParams()
     const [numVulnerabilities, setNumVulnerabilities] = useState<null | number>(null)
     const [vulnerabilityToBeDeleted, setVulnerabilityToBeDeleted] = useState<null | string>(null)
     const router = useRouter()
@@ -118,10 +117,7 @@ function Vulnerabilities() {
     ]
 
     const server = {
-        url: CommonUtils.createUrlWithParams(
-            `${SW360_API_URL}/resource/api/vulnerabilities`,
-            Object.fromEntries(params),
-        ),
+        url: UrlWithParams(`${SW360_API_URL}/resource/api/vulnerabilities`),
         then: (data: EmbeddedVulnerabilities) => {
             setNumVulnerabilities(data.page.totalElements)
             return data._embedded['sw360:vulnerabilityApiDTOes'].map((elem: Vulnerability) => [

@@ -9,7 +9,7 @@
 
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { ShowInfoOnHover } from 'next-sw360'
 import React, { useState } from 'react'
@@ -40,8 +40,7 @@ interface SearchParams {
 function AdvancedSearch({ title = 'Advanced Search', fields }: Props) {
     const router = useRouter()
     const t = useTranslations('default')
-    const params = Object.fromEntries(useSearchParams())
-    const [searchParams, setSearchParam] = useState<SearchParams>(params)
+    const [searchParams, setSearchParam] = useState<SearchParams>()
     const [createdOnSearchOption, setCreatedOnSearchOption] = useState('')
 
     const handleSearchParam = (event: React.ChangeEvent<HTMLInputElement & HTMLSelectElement>) => {

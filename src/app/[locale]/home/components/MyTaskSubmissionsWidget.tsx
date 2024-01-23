@@ -43,6 +43,4 @@ function MyTaskSubmissionsWidget() {
     )
 }
 
-// We need use this to override typescript issue
-// Reference: https://github.com/vercel/next.js/issues/42292
-export default MyTaskSubmissionsWidget as unknown as () => JSX.Element
+export default MyTaskSubmissionsWidget

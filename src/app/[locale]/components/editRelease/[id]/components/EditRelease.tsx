@@ -10,7 +10,7 @@
 
 'use client'
 
-import { notFound, useRouter, useSearchParams } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { PageButtonHeader, SideBar, ToastMessage } from 'next-sw360'
@@ -37,7 +37,7 @@ import {
     ToastData,
     Vendor,
 } from '@/object-types'
-import { ApiUtils, CommonUtils } from '@/utils'
+import { ApiUtils, CommonUtils, UrlWithParams } from '@/utils'
 
 import DeleteReleaseModal from '../../../detail/[id]/components/DeleteReleaseModal'
 import EditClearingDetails from './EditClearingDetails'
@@ -53,7 +53,6 @@ const EditRelease = ({ releaseId }: Props) => {
     const router = useRouter()
     const t = useTranslations('default')
     const { data: session } = useSession()
-    const params = useSearchParams()
     const [selectedTab, setSelectedTab] = useState<string>(CommonTabIds.SUMMARY)
     const [tabList, setTabList] = useState(ReleaseEditTabs.WITHOUT_COMMERCIAL_DETAILS)
     const [release, setRelease] = useState<ReleaseDetail>()
@@ -67,7 +66,7 @@ const EditRelease = ({ releaseId }: Props) => {
 
         ;(async () => {
             try {
-                const queryUrl = CommonUtils.createUrlWithParams(`releases/${releaseId}`, Object.fromEntries(params))
+                const queryUrl = UrlWithParams(`releases/${releaseId}`)
                 const response = await ApiUtils.GET(queryUrl, session.user.access_token, signal)
                 if (response.status === HttpStatus.UNAUTHORIZED) {
                     return signOut()
@@ -108,7 +107,7 @@ const EditRelease = ({ releaseId }: Props) => {
         })()
 
         return () => controller.abort()
-    }, [params, session, releaseId])
+    }, [session, releaseId])
 
     const [releasePayload, setReleasePayload] = useState<Release>({
         name: '',

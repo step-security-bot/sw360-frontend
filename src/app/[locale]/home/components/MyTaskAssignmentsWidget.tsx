@@ -37,6 +37,4 @@ function MyTaskAssignmentsWidget() {
     )
 }
 
-// We need use this to override typescript issue
-// Reference: https://github.com/vercel/next.js/issues/42292
-export default MyTaskAssignmentsWidget as unknown as () => JSX.Element
+export default MyTaskAssignmentsWidget
