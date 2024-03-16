@@ -2,9 +2,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        //"plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:@next/next/recommended",
-        "next",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "next/core-web-vitals",
         "prettier"
     ],
     "settings": {
