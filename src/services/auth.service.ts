@@ -24,7 +24,7 @@ const generateToken = async (userData: UserCredentialInfo) => {
 
     await fetch(clientManagementURL, opts)
         .then((response) => {
-            if (response.status == HttpStatus.OK) {
+            if (response.status === HttpStatus.OK) {
                 return response.text()
             } else {
                 return null
@@ -59,7 +59,7 @@ const generateToken = async (userData: UserCredentialInfo) => {
     let sw360token: AuthToken | null = null
     await fetch(authorizationURL, opts)
         .then((response) => {
-            if (response.status == HttpStatus.OK) {
+            if (response.status === HttpStatus.OK) {
                 return response.text()
             } else {
                 return undefined
