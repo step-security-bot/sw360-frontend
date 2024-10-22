@@ -45,7 +45,7 @@ const ImportSBOMModal = ({ show, setShow }: Props) : ReactNode => {
     const [prepateImportData, setPrepareImportData] = useState<PrepareImportData | undefined>(undefined)
     const [notAllowedMessageDisplayed, setNotAllowedMessageDisplayed] = useState(false)
     const selectedFile = useRef<File | undefined>(undefined)
-    const inputRef = useRef<HTMLInputElement>()
+    const inputRef = useRef<HTMLInputElement>(undefined)
     const router = useRouter()
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -135,7 +135,7 @@ const ImportSBOMModal = ({ show, setShow }: Props) : ReactNode => {
     }
 
     return (
-        <Modal show={show} onHide={() => closeModal()} backdrop='static' centered size='lg'>
+        (<Modal show={show} onHide={() => closeModal()} backdrop='static' centered size='lg'>
             <Modal.Header closeButton>
                 <Modal.Title>
                     <b>{t('Upload SBOM')}</b>
@@ -174,7 +174,7 @@ const ImportSBOMModal = ({ show, setShow }: Props) : ReactNode => {
                                     <br />
                                     <input
                                         className={`${styles['input']}`}
-                                        ref={inputRef as React.LegacyRef<HTMLInputElement>}
+                                        ref={inputRef as React.Ref<HTMLInputElement>}
                                         type='file'
                                         accept='.rdf,.spdx'
                                         onChange={handleFileChange}
@@ -245,8 +245,8 @@ const ImportSBOMModal = ({ show, setShow }: Props) : ReactNode => {
                     {t('Close')}
                 </Button>
             </Modal.Footer>
-        </Modal>
-    )
+        </Modal>)
+    );
 }
 
 export default ImportSBOMModal

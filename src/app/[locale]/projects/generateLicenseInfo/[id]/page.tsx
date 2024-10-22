@@ -11,14 +11,15 @@ import { Metadata } from 'next'
 import GenerateLicenseInfo from './components/GenerateLicenseInfo'
 
 interface Context {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
 export const metadata: Metadata = {
     title: 'Projects',
 }
 
-const GenerateLicenseInformation = async ({ params }: Context) => {
+const GenerateLicenseInformation = async (props: Context) => {
+    const params = await props.params;
     const projectId = params.id
 
     return <GenerateLicenseInfo projectId={projectId} />

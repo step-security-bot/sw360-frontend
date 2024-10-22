@@ -11,14 +11,15 @@ import { Metadata } from 'next'
 import ClearingRequestDetail from './components/ClearingRequestDetail'
 
 interface Context {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
 export const metadata: Metadata = {
     title: 'Requests',
 }
 
-const ClearingRequestDetailsPage = async ({ params }: Context) => {
+const ClearingRequestDetailsPage = async (props: Context) => {
+    const params = await props.params;
     return <ClearingRequestDetail clearingRequestId={params.id} />
 }
 

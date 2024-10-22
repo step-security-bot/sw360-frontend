@@ -45,7 +45,7 @@ const NotificationSettings = ({ notificationSetting, setNotificationSetting }: P
 
     return (
         // We always use the first key as initial key
-        <Accordion defaultActiveKey={preferences[0].key}>
+        (<Accordion defaultActiveKey={preferences[0].key}>
             {preferences.map((value) => (
                 <div key={value.key}>
                     {isClient && (
@@ -76,8 +76,8 @@ const NotificationSettings = ({ notificationSetting, setNotificationSetting }: P
                     )}
                 </div>
             ))}
-        </Accordion>
-    )
+        </Accordion>)
+    );
 }
 
 export default NotificationSettings

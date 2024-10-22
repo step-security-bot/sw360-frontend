@@ -49,7 +49,7 @@ interface ListViewData {
 const upperCaseWithUnderscore = (text: string) => {
     return text
         ? text.trim().toUpperCase().replace(/ /g, '_')
-        : undefined
+        : undefined;
 }
 
 const nameFormatter = (name: string) => {

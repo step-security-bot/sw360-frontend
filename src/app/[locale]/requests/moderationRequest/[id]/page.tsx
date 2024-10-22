@@ -11,14 +11,15 @@ import { Metadata } from 'next'
 import ModerationRequestDetail from './components/ModerationRequestDetail'
 
 interface Context {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
 export const metadata: Metadata = {
     title: 'Requests',
 }
 
-const ModerationRequestDetailsPage = async ({ params }: Context) => {
+const ModerationRequestDetailsPage = async (props: Context) => {
+    const params = await props.params;
     return <ModerationRequestDetail moderationRequestId={params.id} />
 }
 

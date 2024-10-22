@@ -10,10 +10,11 @@
 import DuplicateProject from './components/DuplicateProject'
 
 interface Context {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
-const ProjectDuplicatePage = async ({ params }: Context) => {
+const ProjectDuplicatePage = async (props: Context) => {
+    const params = await props.params;
     const projectId = params.id
 
     return <DuplicateProject projectId={projectId} />

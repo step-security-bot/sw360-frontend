@@ -40,10 +40,20 @@ export function generateStaticParams() {
 
 type Props = {
     children: ReactNode
-    params: { locale: string }
+    params: Promise<{ locale: string }>
 }
 
-async function RootLayout({ children, params: { locale } }: Props) {
+async function RootLayout(props: Props) {
+    const params = await props.params;
+
+    const {
+        locale
+    } = params;
+
+    const {
+        children
+    } = props;
+
     let messages
     try {
         messages = (await import(`@/messages/${locale}.json`)).default

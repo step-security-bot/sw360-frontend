@@ -17,7 +17,7 @@ import { Component,
          Project,
          ReleaseDetail } from '@/object-types'
 import styles from '@/app/[locale]/requests/requestDetail.module.css'
-import { useCallback, useEffect, useState, ReactNode } from 'react'
+import { useCallback, useEffect, useState, ReactNode, type JSX } from 'react';
 import { RequestDocumentTypes } from '@/object-types'
 import TableHeader from './TableHeader'
 import { Table, _ } from 'next-sw360'

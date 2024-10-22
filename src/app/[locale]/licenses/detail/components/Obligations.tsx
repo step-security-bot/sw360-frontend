@@ -70,7 +70,7 @@ const Obligations = ({ licenseId, isEditWhitelist, whitelist, setWhitelist }: Pr
                     obligationDetail.hidden = true
                 }
             }
-        }
+        };
     }
 
     useEffect(() => {

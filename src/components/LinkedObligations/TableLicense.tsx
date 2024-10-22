@@ -34,7 +34,7 @@ interface TableProps extends Partial<Config> {
 }
 
 class TableLicense extends Component<TableProps, unknown> {
-    private wrapper: RefObject<HTMLDivElement> = createRef()
+    private wrapper: RefObject<HTMLDivElement | null> = createRef()
     // Grid.js instance
     private readonly instance: Grid = null
     private tableProps: TableProps = {}

@@ -7,13 +7,14 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-'use client'
-
+'use client';
 import Link from 'next/link'
 
 import { useTranslations } from 'next-intl'
 import { PageButtonHeaderProps } from './PageButtonHeader.types'
 import styles from './pagebuttonheader.module.css'
+
+import type { JSX } from "react";
 
 function PageButtonHeader({
     title,
@@ -30,7 +31,7 @@ function PageButtonHeader({
             return (
                 // Button needs to link to the referenced page from props (value)
                 // and switch to the correct tab (key)
-                <Link href={value['link']} key={key}>
+                (<Link href={value['link']} key={key}>
                     <button
                         key={key}
                         className={`btn btn-${value['type']}`}
@@ -39,8 +40,8 @@ function PageButtonHeader({
                     >
                         {value?.name}
                     </button>
-                </Link>
-            )
+                </Link>)
+            );
         })
     }
 

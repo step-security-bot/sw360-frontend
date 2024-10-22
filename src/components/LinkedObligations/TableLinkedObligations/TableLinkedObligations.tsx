@@ -67,7 +67,7 @@ export default function TableLinkedObligations({ data, setData, setObligationIdT
                     attachmentDetail.hidden = true
                 }
             }
-        }
+        };
     }
 
     const style = {

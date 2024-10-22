@@ -11,14 +11,15 @@ import { Metadata } from 'next'
 import GenerateSourceCodeBundle from './components/GenerateSourceCodeBundle'
 
 interface Context {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
 export const metadata: Metadata = {
     title: 'Projects',
 }
 
-const GenerateSourceCode = async ({ params }: Context) => {
+const GenerateSourceCode = async (props: Context) => {
+    const params = await props.params;
     const projectId = params.id
 
     return <GenerateSourceCodeBundle projectId={projectId} />

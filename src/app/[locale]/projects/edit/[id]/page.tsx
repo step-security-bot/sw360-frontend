@@ -10,10 +10,11 @@
 import EditProject from './components/EditProject'
 
 interface Context {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
-const ProjectEditPage = async ({ params }: Context) => {
+const ProjectEditPage = async (props: Context) => {
+    const params = await props.params;
     const projectId = params.id
 
     return <EditProject projectId={projectId} />

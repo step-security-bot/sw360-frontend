@@ -43,7 +43,7 @@ const AddLicenseDetail = ({
     const params = useSearchParams()
     const [licenseTypes, setLicenseTypes] = useState<Array<LicenseType>>([])
     const validateShortName = (value: string) => {
-        return value.match(/^[A-Za-z0-9\-.+]*$/) ? false : true
+        return value.match(/^[A-Za-z0-9\-.+]*$/) ? false : true;
     }
 
     const updateField = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
