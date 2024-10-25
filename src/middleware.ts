@@ -10,7 +10,7 @@
 // License-Filename: LICENSE
 
 import { UserGroupType } from '@/object-types'
-import { withAuth } from 'next-auth/middleware'
+import { auth } from "@/auth"
 import createMiddleware from 'next-intl/middleware'
 import { NextRequest } from 'next/server'
 import { routing } from './i18n/routing'

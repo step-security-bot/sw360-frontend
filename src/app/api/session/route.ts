@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // Copyright (C) TOSHIBA CORPORATION, 2023. Part of the SW360 Frontend Project.
 // Copyright (C) Toshiba Software Development (Vietnam) Co., Ltd., 2023. Part of the SW360 Frontend Project.
 
@@ -8,19 +9,20 @@
 // SPDX-License-Identifier: EPL-2.0
 // License-Filename: LICENSE
 
-import { getServerSession } from 'next-auth'
+import { auth } from '@/auth'
 import { NextResponse } from 'next/server'
-import authOptions from '../auth/[...nextauth]/authOptions'
 
-export async function GET() {
-    const session = await getServerSession(authOptions)
+export async function GET(): Promise<NextResponse> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const session: any = await auth()
 
-    if (!session) {
+    if (session === null) {
         return new NextResponse(JSON.stringify({ status: 'fail', message: 'You are not logged in' }), { status: 401 })
     }
 
+    // Session is already authenticated at this stage
     return NextResponse.json({
-        authenticated: !!session,
+        authenticated: true,
         session,
     })
 }
